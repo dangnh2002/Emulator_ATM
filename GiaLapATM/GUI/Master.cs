@@ -103,6 +103,7 @@ namespace GiaLapATM.GUI
                         {
                             DangNhapMaPIN_Load();
                         }
+                        break;
                     }
                 }               
             }
