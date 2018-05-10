@@ -46,8 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\ATMDAO.cs" />
     <Compile Include="DAO\cardDAO.cs" />
+    <Compile Include="DAO\ConfigDAO.cs" />
+    <Compile Include="DAO\CustomerDAO.cs" />
+    <Compile Include="DAO\LogDAO.cs" />
+    <Compile Include="DAO\LogTypeDAO.cs" />
+    <Compile Include="DAO\MoneyDAO.cs" />
+    <Compile Include="DAO\OverDraftDAO.cs" />
     <Compile Include="DAO\SQLConnect.cs" />
+    <Compile Include="DAO\StockDAO.cs" />
+    <Compile Include="DAO\WithDraftDAO.cs" />
     <Compile Include="DTO\AccountDTO.cs" />
     <Compile Include="DTO\ATMDTO.cs" />
     <Compile Include="DTO\cardDTO.cs" />
