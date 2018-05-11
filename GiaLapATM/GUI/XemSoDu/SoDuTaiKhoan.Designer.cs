@@ -32,10 +32,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_SoDuChoPhep = new System.Windows.Forms.Label();
+            this.lbl_SoDuThucTe = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btCo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -82,27 +82,27 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Bạn có muốn thực hiện giao dịch khác không?";
             // 
-            // label5
+            // lbl_SoDuChoPhep
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(294, 151);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 25);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "123 VND";
+            this.lbl_SoDuChoPhep.AutoSize = true;
+            this.lbl_SoDuChoPhep.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_SoDuChoPhep.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SoDuChoPhep.Location = new System.Drawing.Point(294, 151);
+            this.lbl_SoDuChoPhep.Name = "lbl_SoDuChoPhep";
+            this.lbl_SoDuChoPhep.Size = new System.Drawing.Size(98, 25);
+            this.lbl_SoDuChoPhep.TabIndex = 6;
+            this.lbl_SoDuChoPhep.Text = "123 VND";
             // 
-            // label6
+            // lbl_SoDuThucTe
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(294, 205);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 25);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "123 VND";
+            this.lbl_SoDuThucTe.AutoSize = true;
+            this.lbl_SoDuThucTe.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_SoDuThucTe.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SoDuThucTe.Location = new System.Drawing.Point(294, 205);
+            this.lbl_SoDuThucTe.Name = "lbl_SoDuThucTe";
+            this.lbl_SoDuThucTe.Size = new System.Drawing.Size(98, 25);
+            this.lbl_SoDuThucTe.TabIndex = 7;
+            this.lbl_SoDuThucTe.Text = "123 VND";
             // 
             // button5
             // 
@@ -117,18 +117,18 @@
             this.button5.Text = "Không";
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btCo
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(552, 371);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(212, 52);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Có";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btCo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btCo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btCo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
+            this.btCo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCo.Location = new System.Drawing.Point(552, 371);
+            this.btCo.Name = "btCo";
+            this.btCo.Size = new System.Drawing.Size(212, 52);
+            this.btCo.TabIndex = 10;
+            this.btCo.Text = "Có";
+            this.btCo.UseVisualStyleBackColor = false;
             // 
             // SoDuTaiKhoan
             // 
@@ -137,9 +137,9 @@
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btCo);
+            this.Controls.Add(this.lbl_SoDuThucTe);
+            this.Controls.Add(this.lbl_SoDuChoPhep);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -158,9 +158,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_SoDuChoPhep;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btCo;
+        public System.Windows.Forms.Label lbl_SoDuThucTe;
     }
 }

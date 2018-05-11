@@ -16,6 +16,7 @@ namespace GiaLapATM.GUI
     public partial class Master : Form
     {
         public static string nameForm = "";
+        public static int SoThe = 0;
         public static DangNhapMaPIN DNPIN = new DangNhapMaPIN();
         public Master()
         {
@@ -24,7 +25,7 @@ namespace GiaLapATM.GUI
 
         private void Master_Load(object sender, EventArgs e)
         {
-            if(nameForm == "")
+            if (nameForm == "")
             {
                 ChonNgonNgu_Load();
             }
@@ -32,7 +33,7 @@ namespace GiaLapATM.GUI
         }
         private void bttrai1_Click(object sender, EventArgs e)
         {
-            if(nameForm == "GiaoDienChinh")
+            if (nameForm == "GiaoDienChinh")
             {
                 RutTien_Load();
             }
@@ -49,7 +50,7 @@ namespace GiaLapATM.GUI
 
         private void bttrai3_Click(object sender, EventArgs e)
         {
-            if(nameForm == "GiaoDienChinh")
+            if (nameForm == "GiaoDienChinh")
             {
                 XemSaoKeTaiKhoan_Load();
             }
@@ -84,9 +85,9 @@ namespace GiaLapATM.GUI
             {
                 DangNhapMaPIN_Load();
             }
-            
+
             else if (nameForm.Equals("DangNhapMaPIN"))
-            {   
+            {
                 foreach (Form form in Application.OpenForms)
                 {
                     if (form.Name == nameForm)//nameForm == DangNhapMaPIN
@@ -97,6 +98,7 @@ namespace GiaLapATM.GUI
                         var txtSoPIN_value = int.Parse(textbox_txtSoPIN.Text);
                         if (cardDAO.Card.ktDangNhap(txtSoTheATM_value, txtSoPIN_value))
                         {
+                            SoThe = txtSoTheATM_value;
                             GiaoDienChinh_Load();
                         }
                         else
@@ -105,7 +107,7 @@ namespace GiaLapATM.GUI
                         }
                         break;
                     }
-                }               
+                }
             }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
@@ -214,10 +216,21 @@ namespace GiaLapATM.GUI
         {
             this.pnMaster.Controls.Clear();
             SoDuTaiKhoan soDuTaiKhoan = new SoDuTaiKhoan();
-            soDuTaiKhoan.TopLevel = false;
+            soDuTaiKhoan.TopLevel = false;            
             this.pnMaster.Controls.Add(soDuTaiKhoan);
             soDuTaiKhoan.Show();
             nameForm = "SoDuTaiKhoan";
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "SoDuTaiKhoan")
+                {
+                   var account =  AccountDAO.Account.getByAccountNo(SoThe);
+                    Label lbl_SoDuChoPhep = form.Controls["lbl_SoDuChoPhep"] as Label;
+                    lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
+                    Label lbl_SoDuThucTe = form.Controls["lbl_SoDuThucTe"] as Label;
+                    lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
+                }
+            }
         }
         public void InHoaDon_Load()
         {

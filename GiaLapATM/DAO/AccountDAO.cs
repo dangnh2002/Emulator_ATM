@@ -32,5 +32,15 @@ namespace GiaLapATM.DAO
             }
             return output;
         }
+        public AccountDTO getByAccountNo(int SoTheATM)
+        {
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Account where AccountNo ='" + SoTheATM + "'");
+            AccountDTO model = new AccountDTO();
+            if(data.Rows.Count>0)
+            {
+                model = convertToObject(data).FirstOrDefault();
+            }
+            return model;
+        }
     }
 }
