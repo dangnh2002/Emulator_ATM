@@ -16,5 +16,6 @@ namespace GiaLapATM.GUI
         {
             InitializeComponent();
         }
+
     }
 }

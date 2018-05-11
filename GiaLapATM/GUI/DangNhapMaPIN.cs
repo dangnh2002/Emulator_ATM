@@ -36,5 +36,16 @@ namespace GiaLapATM.GUI
             string aa = txtSoTheATM.Text;
             cardDAO.Card.ktDangNhap(Int32.Parse(txtSoTheATM.Text), Int32.Parse(txtSoPIN.Text));
         }
+
+        private void txtSoPIN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void txtSoPIN_Leave(object sender, EventArgs e)
+        {
+
+            var aaa = 1;
+        }
     }
 }

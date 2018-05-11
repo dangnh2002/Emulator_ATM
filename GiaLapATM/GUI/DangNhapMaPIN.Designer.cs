@@ -53,6 +53,8 @@
             this.txtSoPIN.Name = "txtSoPIN";
             this.txtSoPIN.Size = new System.Drawing.Size(227, 26);
             this.txtSoPIN.TabIndex = 1;
+            this.txtSoPIN.TextChanged += new System.EventHandler(this.txtSoPIN_TextChanged);
+            this.txtSoPIN.Leave += new System.EventHandler(this.txtSoPIN_Leave);
             // 
             // button1
             // 

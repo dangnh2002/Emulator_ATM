@@ -178,6 +178,7 @@ namespace GiaLapATM.GUI
         }
         private void DangNhapMaPIN_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             DangNhapMaPIN dangNhapMaPIN = new DangNhapMaPIN();
             dangNhapMaPIN.TopLevel = false;
@@ -187,6 +188,7 @@ namespace GiaLapATM.GUI
         }
         public void GiaoDienChinh_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             GiaoDienChinh giaoDienChinh = new GiaoDienChinh();
             giaoDienChinh.TopLevel = false;
@@ -205,6 +207,7 @@ namespace GiaLapATM.GUI
         }
         public void XemSoDuTaiKhoan_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             XemSoDuTaiKhoan xemSoDuTaiKhoan = new XemSoDuTaiKhoan();
             xemSoDuTaiKhoan.TopLevel = false;
@@ -214,26 +217,24 @@ namespace GiaLapATM.GUI
         }
         public void SoDuTaiKhoan_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             SoDuTaiKhoan soDuTaiKhoan = new SoDuTaiKhoan();
             soDuTaiKhoan.TopLevel = false;            
             this.pnMaster.Controls.Add(soDuTaiKhoan);
             soDuTaiKhoan.Show();
             nameForm = "SoDuTaiKhoan";
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == "SoDuTaiKhoan")
-                {
-                   var account =  AccountDAO.Account.getByAccountNo(SoThe);
-                    Label lbl_SoDuChoPhep = form.Controls["lbl_SoDuChoPhep"] as Label;
-                    lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
-                    Label lbl_SoDuThucTe = form.Controls["lbl_SoDuThucTe"] as Label;
-                    lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
-                }
-            }
+            var account = AccountDAO.Account.getByAccountNo(SoThe);
+            var Form = Application.OpenForms[1];
+            Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
+            lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
+            Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
+            lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
+            
         }
         public void InHoaDon_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             InHoaDon inHoaDon = new InHoaDon();
             inHoaDon.TopLevel = false;
@@ -243,6 +244,7 @@ namespace GiaLapATM.GUI
         }
         public void SaoKeTaiKhoan_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             SaoKeTaiKhoan saoKeTaiKhoan = new SaoKeTaiKhoan();
             saoKeTaiKhoan.TopLevel = false;
@@ -252,6 +254,7 @@ namespace GiaLapATM.GUI
         }
         public void XemSaoKeTaiKhoan_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             XemSaoKeTaiKhoan xemSaoKeTaiKhoan = new XemSaoKeTaiKhoan();
             xemSaoKeTaiKhoan.TopLevel = false;
@@ -261,6 +264,7 @@ namespace GiaLapATM.GUI
         }
         public void DoiMaPIN_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             DoiMaPIN doiMaPIN = new DoiMaPIN();
             doiMaPIN.TopLevel = false;
@@ -270,6 +274,7 @@ namespace GiaLapATM.GUI
         }
         public void NhapSoTienChuyen_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             NhapSoTienChuyen nhapSoTienChuyen = new NhapSoTienChuyen();
             nhapSoTienChuyen.TopLevel = false;
@@ -279,6 +284,7 @@ namespace GiaLapATM.GUI
         }
         public void NhapTaiKhoanChuyenDen_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             NhapTaiKhoanChuyenDen nhapTaiKhoanChuyenDen = new NhapTaiKhoanChuyenDen();
             nhapTaiKhoanChuyenDen.TopLevel = false;
@@ -288,6 +294,7 @@ namespace GiaLapATM.GUI
         }
         public void ThongTinChuyenKhoan_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             ThongTinChuyenKhoan thongTinChuyenKhoan = new ThongTinChuyenKhoan();
             thongTinChuyenKhoan.TopLevel = false;
