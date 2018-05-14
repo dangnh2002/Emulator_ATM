@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GiaLapATM.DAO;
-using GiaLapATM.DTO;
-using GiaLapATM.GUI;
 
 namespace GiaLapATM.GUI
 {
@@ -27,7 +24,7 @@ namespace GiaLapATM.GUI
         {
             if (nameForm == "")
             {
-                ChonNgonNgu_Load();
+                DangNhapSoTheATM_Load();
             }
             return;
         }
@@ -47,7 +44,6 @@ namespace GiaLapATM.GUI
             }
             return;
         }
-
         private void bttrai3_Click(object sender, EventArgs e)
         {
             if (nameForm == "GiaoDienChinh")
@@ -56,12 +52,10 @@ namespace GiaLapATM.GUI
             }
             return;
         }
-
         private void bttrai4_Click(object sender, EventArgs e)
         {
             return;
         }
-
         private void btphai1_Click(object sender, EventArgs e)
         {
             if (nameForm == "GiaoDienChinh")
@@ -70,7 +64,6 @@ namespace GiaLapATM.GUI
             }
             return;
         }
-
         private void btphai2_Click(object sender, EventArgs e)
         {
             if (nameForm == "GiaoDienChinh")
@@ -88,26 +81,27 @@ namespace GiaLapATM.GUI
 
             else if (nameForm.Equals("DangNhapMaPIN"))
             {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form.Name == nameForm)//nameForm == DangNhapMaPIN
-                    {
-                        TextBox textbox_txtSoTheATM = form.Controls["txtSoTheATM"] as TextBox;
-                        var txtSoTheATM_value = int.Parse(textbox_txtSoTheATM.Text);
-                        TextBox textbox_txtSoPIN = form.Controls["txtSoPIN"] as TextBox;
-                        var txtSoPIN_value = int.Parse(textbox_txtSoPIN.Text);
-                        if (cardDAO.Card.ktDangNhap(txtSoTheATM_value, txtSoPIN_value))
-                        {
-                            SoThe = txtSoTheATM_value;
-                            GiaoDienChinh_Load();
-                        }
-                        else
-                        {
-                            DangNhapMaPIN_Load();
-                        }
-                        break;
-                    }
-                }
+                //foreach (Form form in Application.OpenForms)
+                //{
+                //    if (form.Name == nameForm)//nameForm == DangNhapMaPIN
+                //    {
+                //        TextBox textbox_txtSoTheATM = form.Controls["txtSoTheATM"] as TextBox;
+                //        var txtSoTheATM_value = int.Parse(textbox_txtSoTheATM.Text);
+                //        TextBox textbox_txtSoPIN = form.Controls["txtSoPIN"] as TextBox;
+                //        var txtSoPIN_value = int.Parse(textbox_txtSoPIN.Text);
+                //        if (cardDAO.Card.ktDangNhap(txtSoTheATM_value, txtSoPIN_value))
+                //        {
+                //            SoThe = txtSoTheATM_value;
+                //            GiaoDienChinh_Load();
+                //        }
+                //        else
+                //        {
+                //            DangNhapMaPIN_Load();
+                //        }
+                //        break;
+                //    }
+                //}
+                GiaoDienChinh_Load();
             }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
@@ -136,6 +130,10 @@ namespace GiaLapATM.GUI
             else if (nameForm == "ThongTinChuyenKhoan")
             {
                 NhapSoTienChuyen_Load();
+            }
+            else if(nameForm == "DangNhapSoTheATM")
+            {
+                ChonNgonNgu_Load();
             }
             return;
         }
@@ -167,8 +165,16 @@ namespace GiaLapATM.GUI
             }
             return;
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GiaoDienChinh_Load();
+            return;
+        }
+
+        #region LoadForm
         private void ChonNgonNgu_Load()
         {
+            Application.OpenForms[1].Close();
             this.pnMaster.Controls.Clear();
             ChonNgonNgu chonNgonNgu = new ChonNgonNgu();
             chonNgonNgu.TopLevel = false;
@@ -198,6 +204,7 @@ namespace GiaLapATM.GUI
         }
         public void RutTien_Load()
         {
+            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             RutTien rutTien = new RutTien();
             rutTien.TopLevel = false;
@@ -224,12 +231,12 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(soDuTaiKhoan);
             soDuTaiKhoan.Show();
             nameForm = "SoDuTaiKhoan";
-            var account = AccountDAO.Account.getByAccountNo(SoThe);
-            var Form = Application.OpenForms[1];
-            Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
-            lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
-            Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
-            lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
+            //var account = AccountDTO.Account.getByAccountNo(SoThe);
+            //var Form = Application.OpenForms[1];
+            //Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
+            //lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
+            //Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
+            //lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
             
         }
         public void InHoaDon_Load()
@@ -302,11 +309,133 @@ namespace GiaLapATM.GUI
             thongTinChuyenKhoan.Show();
             nameForm = "ThongTinChuyenKhoan";
         }
+        public void DangNhapSoTheATM_Load()
+        {
+            if (nameForm != "")
+            {
+                Application.OpenForms[1].Close();//đóng form hiện tại đang mở                
+            }
+            this.pnMaster.Controls.Clear();
+            DangNhapSoTheATM dangNhapSoTheATM = new DangNhapSoTheATM();
+            dangNhapSoTheATM.TopLevel = false;
+            this.pnMaster.Controls.Add(dangNhapSoTheATM);
+            dangNhapSoTheATM.Show();
+            nameForm = "DangNhapSoTheATM";
+        }
+        #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        #region bàn phím
+        private bool phimSo(string phim)
+        {
+            try
+            {
+                if (nameForm == "DangNhapMaPIN" || nameForm == "DangNhapSoTheATM" || nameForm == "DoiMaPIN" || nameForm == "NhapSoTienChuyen" || nameForm == "NhapTaiKhoanChuyenDen")
+                {
+                    var form = Application.OpenForms[1];
+                    form.Controls["txtNhapLieu"].Text += phim;
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        private void bt1_Click(object sender, EventArgs e)
+        {
+            phimSo("1");
+            return;
+        }
+
+        private void bt2_Click(object sender, EventArgs e)
+        {
+            phimSo("2");
+            return;
+        }
+
+        private void bt3_Click(object sender, EventArgs e)
+        {
+            phimSo("3");
+            return;
+        }
+
+        private void bt4_Click(object sender, EventArgs e)
+        {
+            phimSo("4");
+            return;
+        }
+
+        private void bt5_Click(object sender, EventArgs e)
+        {
+            phimSo("5");
+            return;
+        }
+
+        private void bt6_Click(object sender, EventArgs e)
+        {
+            phimSo("6");
+            return;
+        }
+
+        private void bt7_Click(object sender, EventArgs e)
+        {
+            phimSo("7");
+            return;
+        }
+
+        private void bt8_Click(object sender, EventArgs e)
+        {
+            phimSo("8");
+            return;
+        }
+
+        private void bt9_Click(object sender, EventArgs e)
+        {
+            phimSo("9");
+            return;
+        }
+
+        private void bt0_Click(object sender, EventArgs e)
+        {
+            phimSo("0");
+            return;
+        }
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
+            if (nameForm == "DangNhapMaPIN" || nameForm == "DangNhapSoTheATM" || nameForm == "DoiMaPIN" || nameForm == "NhapSoTienChuyen" || nameForm == "NhapTaiKhoanChuyenDen")
+            {
+                var form = Application.OpenForms[1];
+                form.Controls["txtNhapLieu"].Text = "";
+            }                
+            return;
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
         {
             GiaoDienChinh_Load();
             return;
         }
+
+        private void btEnter_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void btBackspace_Click(object sender, EventArgs e)
+        {
+            if (nameForm == "DangNhapMaPIN" || nameForm == "DangNhapSoTheATM" || nameForm == "DoiMaPIN" || nameForm == "NhapSoTienChuyen" || nameForm == "NhapTaiKhoanChuyenDen")
+            {
+                var form = Application.OpenForms[1];
+                int length = form.Controls["txtNhapLieu"].Text.Length;
+                if (length > 0)
+                {
+                    form.Controls["txtNhapLieu"].Text = form.Controls["txtNhapLieu"].Text.Remove(length - 1, 1);
+                }
+            }
+            return;       
+        }
+        #endregion
+
+
     }
 }

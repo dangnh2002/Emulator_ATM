@@ -30,7 +30,7 @@
         {
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -60,13 +60,13 @@
             this.button5.Text = "Tiếp tục";
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtNhapLieu
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(196, 125);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(351, 26);
-            this.textBox1.TabIndex = 22;
+            this.txtNhapLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNhapLieu.Location = new System.Drawing.Point(196, 125);
+            this.txtNhapLieu.Name = "txtNhapLieu";
+            this.txtNhapLieu.Size = new System.Drawing.Size(351, 26);
+            this.txtNhapLieu.TabIndex = 22;
             // 
             // label1
             // 
@@ -87,7 +87,7 @@
             this.ClientSize = new System.Drawing.Size(764, 521);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNhapLieu);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NhapSoTienChuyen";
@@ -101,7 +101,7 @@
 
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNhapLieu;
         private System.Windows.Forms.Label label1;
     }
 }

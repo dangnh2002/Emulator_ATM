@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GiaLapATM.DAO;
-using GiaLapATM.DTO;
 
 namespace GiaLapATM.GUI
 {
@@ -24,17 +22,10 @@ namespace GiaLapATM.GUI
         {
 
         }
-        public bool KTDangNhap(object sender, EventArgs e)
-        {
-            string aa = txtSoTheATM.Text;
-            button1_Click(sender, e);
-            return cardDAO.Card.ktDangNhap(Int32.Parse(txtSoTheATM.Text), Int32.Parse(txtSoPIN.Text));
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string aa = txtSoTheATM.Text;
-            cardDAO.Card.ktDangNhap(Int32.Parse(txtSoTheATM.Text), Int32.Parse(txtSoPIN.Text));
+
         }
 
         private void txtSoPIN_TextChanged(object sender, EventArgs e)
@@ -45,7 +36,6 @@ namespace GiaLapATM.GUI
         private void txtSoPIN_Leave(object sender, EventArgs e)
         {
 
-            var aaa = 1;
         }
     }
 }

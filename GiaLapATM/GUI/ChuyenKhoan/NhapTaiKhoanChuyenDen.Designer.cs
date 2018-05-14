@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,13 +45,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Bạn hãy nhập tài khoản chuyển đến của bạn:\r\n";
             // 
-            // textBox1
+            // txtNhapLieu
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(133, 127);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(490, 26);
-            this.textBox1.TabIndex = 2;
+            this.txtNhapLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNhapLieu.Location = new System.Drawing.Point(133, 127);
+            this.txtNhapLieu.Name = "txtNhapLieu";
+            this.txtNhapLieu.Size = new System.Drawing.Size(490, 26);
+            this.txtNhapLieu.TabIndex = 2;
             // 
             // button6
             // 
@@ -89,7 +89,7 @@
             this.ClientSize = new System.Drawing.Size(764, 521);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNhapLieu);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NhapTaiKhoanChuyenDen";
@@ -102,7 +102,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNhapLieu;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
     }

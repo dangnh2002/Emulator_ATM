@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -67,14 +67,14 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "(Ấn Backspace để nhập lại, ấn ESC để hủy bỏ)";
             // 
-            // textBox1
+            // txtNhapLieu
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(266, 199);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 26);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.UseSystemPasswordChar = true;
+            this.txtNhapLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNhapLieu.Location = new System.Drawing.Point(266, 199);
+            this.txtNhapLieu.Name = "txtNhapLieu";
+            this.txtNhapLieu.Size = new System.Drawing.Size(227, 26);
+            this.txtNhapLieu.TabIndex = 24;
+            this.txtNhapLieu.UseSystemPasswordChar = true;
             // 
             // DoiMaPIN
             // 
@@ -82,7 +82,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNhapLieu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -99,6 +99,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNhapLieu;
     }
 }
