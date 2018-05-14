@@ -19,7 +19,11 @@ namespace GiaLapATM.DAO
         }
         public bool ktDangNhap(int soTheATM, int soPIN)
         {
-            return true;
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Card join tbl_Account on tbl_Card.AcountID = tbl_Account.AcountID where AccountNo ='" + soTheATM + "' and PIN='" + soPIN + "'");
+            var a = convertToObject(data);
+            if (data.Rows.Count > 0)
+                return true;
+            return false;
         }
         public List<cardDTO> convertToObject (DataTable input)
         {

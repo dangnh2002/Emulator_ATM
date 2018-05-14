@@ -42,5 +42,23 @@ namespace GiaLapATM.DAO
             }
             return model;
         }
+        public bool ChuyenTien(int fromthe, int tothe, int sotien)
+        {
+            try
+            {
+                //trừ tiền tài khoản đi
+                var from_account = getByAccountNo(fromthe);
+                from_account.Balance -= sotien;
+                //cộng tiền tài khoản đến
+                var to_account = getByAccountNo(tothe);
+                to_account.Balance += sotien;
+                
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -76,7 +76,9 @@
     <Compile Include="GUI\DangNhapMaPIN.Designer.cs">
       <DependentUpon>DangNhapMaPIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DangNhapSoTheATM.cs" />
+    <Compile Include="GUI\DangNhapSoTheATM.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\DangNhapSoTheATM.Designer.cs">
       <DependentUpon>DangNhapSoTheATM.cs</DependentUpon>
     </Compile>
@@ -206,6 +208,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\biz_masthead_large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{e7a76c12-ff13-4fa3-9679-ac5296f0047f}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ceb13780-d8d8-41be-89a9-0f90dc16bcc4}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

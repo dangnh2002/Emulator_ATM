@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using GiaLapATM.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +14,8 @@ namespace GiaLapATM.GUI
 {
     public partial class Master : Form
     {
-        public static string nameForm = "";
-        public static int SoThe = 0;
+        public static string nameForm = "", details = "";
+        public static int SoThe = 0, sothechuyenden = 0, sotienchuyenden = 0;
         public static DangNhapMaPIN DNPIN = new DangNhapMaPIN();
         public Master()
         {
@@ -70,6 +72,13 @@ namespace GiaLapATM.GUI
             {
                 NhapTaiKhoanChuyenDen_Load();
             }
+            else if(nameForm == "ThongTinChuyenKhoan")
+            {
+                if(AccountBUS.ChuyenTien(SoThe,sothechuyenden,sotienchuyenden) && LogBUS.ChuyenTien(SoThe, sothechuyenden, sotienchuyenden, details))
+                {
+                    GiaoDienChinh_Load();
+                }
+            }
             return;
         }
         public void btphai3_Click(object sender, EventArgs e)
@@ -81,27 +90,17 @@ namespace GiaLapATM.GUI
 
             else if (nameForm.Equals("DangNhapMaPIN"))
             {
-                //foreach (Form form in Application.OpenForms)
-                //{
-                //    if (form.Name == nameForm)//nameForm == DangNhapMaPIN
-                //    {
-                //        TextBox textbox_txtSoTheATM = form.Controls["txtSoTheATM"] as TextBox;
-                //        var txtSoTheATM_value = int.Parse(textbox_txtSoTheATM.Text);
-                //        TextBox textbox_txtSoPIN = form.Controls["txtSoPIN"] as TextBox;
-                //        var txtSoPIN_value = int.Parse(textbox_txtSoPIN.Text);
-                //        if (cardDAO.Card.ktDangNhap(txtSoTheATM_value, txtSoPIN_value))
-                //        {
-                //            SoThe = txtSoTheATM_value;
-                //            GiaoDienChinh_Load();
-                //        }
-                //        else
-                //        {
-                //            DangNhapMaPIN_Load();
-                //        }
-                //        break;
-                //    }
-                //}
-                GiaoDienChinh_Load();
+                var Form = Application.OpenForms[1];
+                TextBox txt_MaPin = Form.Controls["txtNhapLieu"] as TextBox;
+                var mapin = int.Parse(txt_MaPin.Text);
+                if(CardBUS.ktDangNhap(SoThe,mapin))
+                {
+                    GiaoDienChinh_Load();
+                }
+                else
+                {
+                    DangNhapMaPIN_Load();
+                }
             }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
@@ -121,10 +120,25 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "NhapTaiKhoanChuyenDen")
             {
-                NhapSoTienChuyen_Load();
+                var Form = Application.OpenForms[1];
+                TextBox txt_SoTaiKhoan = Form.Controls["txtNhapLieu"] as TextBox;
+                sothechuyenden = int.Parse(txt_SoTaiKhoan.Text);
+                var account = AccountBUS.getByAccountNo(sothechuyenden);
+                if (account.AccountNo != null)
+                {
+
+                    NhapSoTienChuyen_Load();
+                }
+                else
+                {
+                    NhapTaiKhoanChuyenDen_Load();
+                }
             }
             else if (nameForm == "NhapSoTienChuyen")
             {
+                var Form = Application.OpenForms[1];
+                TextBox txt_Sotienchuyen = Form.Controls["txtNhapLieu"] as TextBox;
+                sotienchuyenden = int.Parse(txt_Sotienchuyen.Text);
                 ThongTinChuyenKhoan_Load();
             }
             else if (nameForm == "ThongTinChuyenKhoan")
@@ -133,6 +147,9 @@ namespace GiaLapATM.GUI
             }
             else if(nameForm == "DangNhapSoTheATM")
             {
+                var Form = Application.OpenForms[1];
+                TextBox txt_sothe = Form.Controls["txtNhapLieu"] as TextBox;
+                SoThe = int.Parse(txt_sothe.Text);
                 ChonNgonNgu_Load();
             }
             return;
@@ -231,13 +248,14 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(soDuTaiKhoan);
             soDuTaiKhoan.Show();
             nameForm = "SoDuTaiKhoan";
-            //var account = AccountDTO.Account.getByAccountNo(SoThe);
-            //var Form = Application.OpenForms[1];
-            //Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
-            //lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
-            //Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
-            //lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
-            
+
+            var account = AccountBUS.getByAccountNo(SoThe);
+            var Form = Application.OpenForms[1];
+            Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
+            lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
+            Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
+            lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
+
         }
         public void InHoaDon_Load()
         {
@@ -308,6 +326,19 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(thongTinChuyenKhoan);
             thongTinChuyenKhoan.Show();
             nameForm = "ThongTinChuyenKhoan";
+
+            var account = AccountBUS.getByAccountNo(sothechuyenden);
+            var AccountInfo = CustomerBUS.getByCustID(account.CustID); 
+            var Form = Application.OpenForms[1];
+            Label lbl_chutaikhoan = Form.Controls["lbl_chutaikhoan"] as Label;
+            lbl_chutaikhoan.Text = AccountInfo.Name;
+            Label lbl_sotaikhoan = Form.Controls["lbl_sotaikhoan"] as Label;
+            lbl_sotaikhoan.Text = account.AccountNo;
+            Label lbl_sotienchuyen = Form.Controls["lbl_sotienchuyen"] as Label;
+            lbl_sotienchuyen.Text = sotienchuyenden.ToString();
+
+
+
         }
         public void DangNhapSoTheATM_Load()
         {

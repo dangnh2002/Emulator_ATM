@@ -31,5 +31,15 @@ namespace GiaLapATM.DAO
             }
             return output;
         }
+        public CustomerDTO getByCustID(long ID)
+        {
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Customer where CustID ='" + ID + "'");
+            CustomerDTO model = new CustomerDTO();
+            if (data.Rows.Count > 0)
+            {
+                model = convertToObject(data).FirstOrDefault();
+            }
+            return model;
+        }
     }
 }

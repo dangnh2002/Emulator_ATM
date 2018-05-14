@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBUS.cs" />
+    <Compile Include="CardBUS.cs" />
+    <Compile Include="CustomerBUS.cs" />
+    <Compile Include="LogBUS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,9 +54,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GiaLapATM\GiaLapATM.csproj">
-      <Project>{0bf32d1e-7e61-4195-a0f8-599b706fa7bc}</Project>
-      <Name>GiaLapATM</Name>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{71d45cbc-4e74-4d87-8de8-f25e1ce0a8e5}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ceb13780-d8d8-41be-89a9-0f90dc16bcc4}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\WindowsApplication1\TransparentImagesLabels.csproj">
       <Project>{34654eed-1933-446f-90e1-47437d9381ec}</Project>
