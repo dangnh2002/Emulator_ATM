@@ -76,9 +76,7 @@
     <Compile Include="GUI\DangNhapMaPIN.Designer.cs">
       <DependentUpon>DangNhapMaPIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DangNhapSoTheATM.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GUI\DangNhapSoTheATM.cs" />
     <Compile Include="GUI\DangNhapSoTheATM.Designer.cs">
       <DependentUpon>DangNhapSoTheATM.cs</DependentUpon>
     </Compile>
