@@ -36,7 +36,7 @@ namespace GiaLapATM.DAO
         {
             DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Account where AccountNo ='" + SoTheATM + "'");
             AccountDTO model = new AccountDTO();
-            if(data.Rows.Count>0)
+            if (data.Rows.Count > 0)
             {
                 model = convertToObject(data).FirstOrDefault();
             }
@@ -49,10 +49,14 @@ namespace GiaLapATM.DAO
                 //trừ tiền tài khoản đi
                 var from_account = getByAccountNo(fromthe);
                 from_account.Balance -= sotien;
+                var query_from_account = "update tbl_Account set Balance = " + from_account.Balance + " where AcountID = " + from_account.AcountID;
+                SQLConnect.Instance.ExecuteNonQuery(query_from_account);
                 //cộng tiền tài khoản đến
                 var to_account = getByAccountNo(tothe);
                 to_account.Balance += sotien;
-                
+                var query_to_account = "update tbl_Account set Balance = " + to_account.Balance + " where AcountID = " + to_account.AcountID;
+                SQLConnect.Instance.ExecuteNonQuery(query_to_account);
+
                 return true;
             }
             catch (Exception)

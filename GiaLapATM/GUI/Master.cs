@@ -92,15 +92,24 @@ namespace GiaLapATM.GUI
             {
                 var Form = Application.OpenForms[1];
                 TextBox txt_MaPin = Form.Controls["txtNhapLieu"] as TextBox;
-                var mapin = int.Parse(txt_MaPin.Text);
-                if(CardBUS.ktDangNhap(SoThe,mapin))
+                if (!string.IsNullOrEmpty(txt_MaPin.Text))
                 {
-                    GiaoDienChinh_Load();
+                    var mapin = int.Parse(txt_MaPin.Text);
+                    if (CardBUS.ktDangNhap(SoThe, mapin))
+                    {
+                        GiaoDienChinh_Load();
+                    }
+                    else
+                    {
+                        DangNhapMaPIN_Load();
+                    }
                 }
                 else
                 {
                     DangNhapMaPIN_Load();
                 }
+
+
             }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
@@ -122,24 +131,38 @@ namespace GiaLapATM.GUI
             {
                 var Form = Application.OpenForms[1];
                 TextBox txt_SoTaiKhoan = Form.Controls["txtNhapLieu"] as TextBox;
-                sothechuyenden = int.Parse(txt_SoTaiKhoan.Text);
-                var account = AccountBUS.getByAccountNo(sothechuyenden);
-                if (account.AccountNo != null)
+                if (!string.IsNullOrEmpty(txt_SoTaiKhoan.Text))
                 {
+                    sothechuyenden = int.Parse(txt_SoTaiKhoan.Text);
+                    var account = AccountBUS.getByAccountNo(sothechuyenden);
+                    if (account.AccountNo != null)
+                    {
 
-                    NhapSoTienChuyen_Load();
+                        NhapSoTienChuyen_Load();
+                    }
+                    else
+                    {
+                        NhapTaiKhoanChuyenDen_Load();
+                    }
                 }
                 else
                 {
                     NhapTaiKhoanChuyenDen_Load();
-                }
+                }                
             }
             else if (nameForm == "NhapSoTienChuyen")
             {
                 var Form = Application.OpenForms[1];
                 TextBox txt_Sotienchuyen = Form.Controls["txtNhapLieu"] as TextBox;
-                sotienchuyenden = int.Parse(txt_Sotienchuyen.Text);
-                ThongTinChuyenKhoan_Load();
+                if(!string.IsNullOrEmpty(txt_Sotienchuyen.Text))
+                {
+                    sotienchuyenden = int.Parse(txt_Sotienchuyen.Text);
+                    ThongTinChuyenKhoan_Load();
+                }
+                else
+                {
+                    NhapSoTienChuyen_Load();
+                }
             }
             else if (nameForm == "ThongTinChuyenKhoan")
             {
@@ -149,8 +172,15 @@ namespace GiaLapATM.GUI
             {
                 var Form = Application.OpenForms[1];
                 TextBox txt_sothe = Form.Controls["txtNhapLieu"] as TextBox;
-                SoThe = int.Parse(txt_sothe.Text);
-                ChonNgonNgu_Load();
+                if(!string.IsNullOrEmpty(txt_sothe.Text))
+                {
+                    SoThe = int.Parse(txt_sothe.Text);
+                    ChonNgonNgu_Load();
+                }
+                else
+                {
+                    DangNhapSoTheATM_Load();
+                }
             }
             return;
         }
@@ -276,6 +306,11 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(saoKeTaiKhoan);
             saoKeTaiKhoan.Show();
             nameForm = "SaoKeTaiKhoan";
+            var Form = Application.OpenForms[1];
+            DataGridView grid = Form.Controls["Grid_saoke"] as DataGridView;
+            grid.DataSource = LogBUS.get5Rows(SoThe);
+            Label lbl_sodu = Form.Controls["lbl_sodu"] as Label;
+            lbl_sodu.Text = AccountBUS.getByAccountNo(SoThe).Balance.ToString("0,000");
         }
         public void XemSaoKeTaiKhoan_Load()
         {
@@ -335,7 +370,7 @@ namespace GiaLapATM.GUI
             Label lbl_sotaikhoan = Form.Controls["lbl_sotaikhoan"] as Label;
             lbl_sotaikhoan.Text = account.AccountNo;
             Label lbl_sotienchuyen = Form.Controls["lbl_sotienchuyen"] as Label;
-            lbl_sotienchuyen.Text = sotienchuyenden.ToString();
+            lbl_sotienchuyen.Text = sotienchuyenden.ToString("0,000");
 
 
 

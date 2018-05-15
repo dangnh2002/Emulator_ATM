@@ -25,6 +25,16 @@ namespace GiaLapATM.DAO
                 return true;
             return false;
         }
+        public cardDTO getByAccountID(int AccountID)
+        {
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Card where AcountID ='" + AccountID +"'");
+            cardDTO model = new cardDTO();
+            if(data.Rows.Count>0)
+            {
+                model = convertToObject(data).FirstOrDefault();
+            }
+            return model;
+        }
         public List<cardDTO> convertToObject (DataTable input)
         {
             List<cardDTO> output = new List<cardDTO>();

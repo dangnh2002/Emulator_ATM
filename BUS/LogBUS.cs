@@ -18,5 +18,9 @@ namespace BUS
         {
             return LogDAO.Log.getByDate(FromDate, ToDate);
         }
+        public static List<LogDTO> get5Rows(int sothe)
+        {
+            return LogDAO.Log.get5Rows(sothe);
+        }
     }
 }

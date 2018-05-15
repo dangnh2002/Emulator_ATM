@@ -38,24 +38,40 @@ namespace GiaLapATM.DAO
         {
             try
             {
+                AccountDTO account = AccountDAO.Account.getByAccountNo(fromthe);
+                cardDTO Card = cardDAO.Card.getByAccountID(account.AcountID);
                 LogDTO model = new LogDTO();
                 model.Amount = sotien;
-                model.CardNo = fromthe;
+                model.CardNo = Card.CardNo;
                 model.CardToNo = tothe;
                 model.LogDate = DateTime.Now;
                 model.LogTypeID = 1;
                 Random rnd = new Random();
-                model.ATMID = rnd.Next(1,10);
-                model.Details = details;
-
+                model.ATMID = rnd.Next(1, 11);
+                model.Details = fromthe + " to " + tothe + ": " + details;
+                var query = "insert into tbl_Log (LogTypeID,CardNo,ATMID,LogDate,Amount,Details,CardToNo) values("
+                            + model.LogTypeID + "," + model.CardNo + "," + model.ATMID + ",'" + model.LogDate + "'," + model.Amount + ",'" + model.Details + "'," + model.CardToNo + ")";
+                SQLConnect.Instance.ExecuteNonQuery(query);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
         }
-        public List<LogDTO> getByDate(DateTime FromDate,DateTime ToDate)
+        public List<LogDTO> get5Rows(int sothe)
+        {
+            AccountDTO account = AccountDAO.Account.getByAccountNo(sothe);
+            cardDTO card = cardDAO.Card.getByAccountID(account.AcountID);
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Log where Cardno = " + card.CardNo);
+            List<LogDTO> model = new List<LogDTO>();
+            if (data.Rows.Count > 0)
+            {
+                model = convertToObject(data).Take(5).ToList();
+            }
+            return model;
+        }
+        public List<LogDTO> getByDate(DateTime FromDate, DateTime ToDate)
         {
             DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Log where LogDate between " + FromDate + " and " + ToDate);
             List<LogDTO> model = new List<LogDTO>();
