@@ -38,8 +38,13 @@
             this.Grid_saoke = new System.Windows.Forms.DataGridView();
             this.logDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.logDTOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -118,7 +123,11 @@
             this.Grid_saoke.AllowUserToDeleteRows = false;
             this.Grid_saoke.AutoGenerateColumns = false;
             this.Grid_saoke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid_saoke.DataSource = this.logDTOBindingSource;
+            this.Grid_saoke.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.Grid_saoke.DataSource = this.logDTOBindingSource1;
             this.Grid_saoke.Location = new System.Drawing.Point(12, 153);
             this.Grid_saoke.Name = "Grid_saoke";
             this.Grid_saoke.ReadOnly = true;
@@ -137,6 +146,34 @@
             this.button2.TabIndex = 21;
             this.button2.Text = "In hóa đơn";
             this.button2.UseVisualStyleBackColor = false;
+            // 
+            // logDTOBindingSource1
+            // 
+            this.logDTOBindingSource1.DataSource = typeof(GiaLapATM.DTO.LogDTO);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "LogDate";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ngày giao dịch";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Amount";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Số tiền giao dịch";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Details";
+            this.dataGridViewTextBoxColumn3.HeaderText = "nội dung giao dịch";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
             // 
             // SaoKeTaiKhoan
             // 
@@ -157,6 +194,7 @@
             this.Text = "SaoKeTaiKhoan";
             ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +214,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.BindingSource logDTOBindingSource1;
     }
 }
