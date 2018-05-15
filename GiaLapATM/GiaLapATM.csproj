@@ -118,12 +118,6 @@
     <Compile Include="GUI\SaoKeTK\SaoKeTaiKhoan.Designer.cs">
       <DependentUpon>SaoKeTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\SaoKeTK\XemSaoKeTaiKhoan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\SaoKeTK\XemSaoKeTaiKhoan.Designer.cs">
-      <DependentUpon>XemSaoKeTaiKhoan.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\XemSoDu\SoDuTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,9 +167,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SaoKeTK\SaoKeTaiKhoan.resx">
       <DependentUpon>SaoKeTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\SaoKeTK\XemSaoKeTaiKhoan.resx">
-      <DependentUpon>XemSaoKeTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\XemSoDu\SoDuTaiKhoan.resx">
       <DependentUpon>SoDuTaiKhoan.cs</DependentUpon>

@@ -50,7 +50,7 @@ namespace GiaLapATM.GUI
         {
             if (nameForm == "GiaoDienChinh")
             {
-                XemSaoKeTaiKhoan_Load();
+                SaoKeTaiKhoan_Load();
             }
             return;
         }
@@ -311,16 +311,6 @@ namespace GiaLapATM.GUI
             grid.DataSource = LogBUS.get5Rows(SoThe);
             Label lbl_sodu = Form.Controls["lbl_sodu"] as Label;
             lbl_sodu.Text = AccountBUS.getByAccountNo(SoThe).Balance.ToString("0,000");
-        }
-        public void XemSaoKeTaiKhoan_Load()
-        {
-            Application.OpenForms[1].Close();//đóng form hiện tại đang mở
-            this.pnMaster.Controls.Clear();
-            XemSaoKeTaiKhoan xemSaoKeTaiKhoan = new XemSaoKeTaiKhoan();
-            xemSaoKeTaiKhoan.TopLevel = false;
-            this.pnMaster.Controls.Add(xemSaoKeTaiKhoan);
-            xemSaoKeTaiKhoan.Show();
-            nameForm = "XemSaoKeTaiKhoan";
         }
         public void DoiMaPIN_Load()
         {

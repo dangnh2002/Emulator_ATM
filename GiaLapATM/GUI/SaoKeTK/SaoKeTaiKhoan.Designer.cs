@@ -37,9 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Grid_saoke = new System.Windows.Forms.DataGridView();
             this.logDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.logDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -120,44 +118,25 @@
             this.Grid_saoke.AllowUserToDeleteRows = false;
             this.Grid_saoke.AutoGenerateColumns = false;
             this.Grid_saoke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid_saoke.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.logDateDataGridViewTextBoxColumn,
-            this.amountDataGridViewTextBoxColumn,
-            this.detailsDataGridViewTextBoxColumn});
             this.Grid_saoke.DataSource = this.logDTOBindingSource;
             this.Grid_saoke.Location = new System.Drawing.Point(12, 153);
             this.Grid_saoke.Name = "Grid_saoke";
             this.Grid_saoke.ReadOnly = true;
-            this.Grid_saoke.Size = new System.Drawing.Size(740, 196);
+            this.Grid_saoke.Size = new System.Drawing.Size(519, 196);
             this.Grid_saoke.TabIndex = 20;
             // 
-            // logDTOBindingSource
+            // button2
             // 
-            this.logDTOBindingSource.DataSource = typeof(GiaLapATM.DTO.LogDTO);
-            // 
-            // logDateDataGridViewTextBoxColumn
-            // 
-            this.logDateDataGridViewTextBoxColumn.DataPropertyName = "LogDate";
-            this.logDateDataGridViewTextBoxColumn.HeaderText = "Ngày giao dịch";
-            this.logDateDataGridViewTextBoxColumn.Name = "logDateDataGridViewTextBoxColumn";
-            this.logDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.logDateDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Số tiền giao dịch";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.amountDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // detailsDataGridViewTextBoxColumn
-            // 
-            this.detailsDataGridViewTextBoxColumn.DataPropertyName = "Details";
-            this.detailsDataGridViewTextBoxColumn.HeaderText = "Nội dung giao dịch";
-            this.detailsDataGridViewTextBoxColumn.Name = "detailsDataGridViewTextBoxColumn";
-            this.detailsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.detailsDataGridViewTextBoxColumn.Width = 290;
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(552, 281);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(212, 52);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "In hóa đơn";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // SaoKeTaiKhoan
             // 
@@ -165,6 +144,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.Grid_saoke);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
@@ -195,5 +175,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn logDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button2;
     }
 }
