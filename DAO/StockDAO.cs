@@ -18,6 +18,7 @@ namespace GiaLapATM.DAO
         }
         public List<StockDTO> convertToObject(DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<StockDTO> output = new List<StockDTO>();
             foreach (DataRow dr in input.Rows)
             {

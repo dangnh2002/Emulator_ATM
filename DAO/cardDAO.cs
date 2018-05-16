@@ -19,24 +19,26 @@ namespace GiaLapATM.DAO
         }
         public bool ktDangNhap(int soTheATM, int soPIN)
         {
+            //kiểm tra số thẻ và mã pin có tồn tại hay không 
             DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Card join tbl_Account on tbl_Card.AcountID = tbl_Account.AcountID where AccountNo ='" + soTheATM + "' and PIN='" + soPIN + "'");
-            var a = convertToObject(data);
             if (data.Rows.Count > 0)
                 return true;
             return false;
         }
         public cardDTO getByAccountID(int AccountID)
         {
+            //lấy thông tin account theo accountID
             DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Card where AcountID ='" + AccountID +"'");
-            cardDTO model = new cardDTO();
+            cardDTO model = new cardDTO();  //object trả ra
             if(data.Rows.Count>0)
             {
-                model = convertToObject(data).FirstOrDefault();
+                model = convertToObject(data).FirstOrDefault();//convert về dạng object
             }
             return model;
         }
         public List<cardDTO> convertToObject (DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<cardDTO> output = new List<cardDTO>();
             foreach (DataRow dr in input.Rows)
             {

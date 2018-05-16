@@ -18,6 +18,7 @@ namespace GiaLapATM.DAO
         }
         public List<OverDraftDTO> convertToObject(DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<OverDraftDTO> output = new List<OverDraftDTO>();
             foreach (DataRow dr in input.Rows)
             {

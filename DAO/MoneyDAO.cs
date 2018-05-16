@@ -18,6 +18,7 @@ namespace GiaLapATM.DAO
         }
         public List<MoneyDTO> convertToObject(DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<MoneyDTO> output = new List<MoneyDTO>();
             foreach (DataRow dr in input.Rows)
             {

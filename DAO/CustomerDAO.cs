@@ -18,6 +18,7 @@ namespace GiaLapATM.DAO
         }
         public List<CustomerDTO> convertToObject(DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<CustomerDTO> output = new List<CustomerDTO>();
             foreach (DataRow dr in input.Rows)
             {
@@ -33,11 +34,12 @@ namespace GiaLapATM.DAO
         }
         public CustomerDTO getByCustID(long ID)
         {
+            //lấy thông tin khách hàng theo ID
             DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Customer where CustID ='" + ID + "'");
-            CustomerDTO model = new CustomerDTO();
+            CustomerDTO model = new CustomerDTO();  //object trả ra
             if (data.Rows.Count > 0)
             {
-                model = convertToObject(data).FirstOrDefault();
+                model = convertToObject(data).FirstOrDefault(); //convert từ DataTable về dang object
             }
             return model;
         }

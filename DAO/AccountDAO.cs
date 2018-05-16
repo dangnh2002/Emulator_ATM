@@ -18,6 +18,7 @@ namespace GiaLapATM.DAO
         }
         public List<AccountDTO> convertToObject(DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<AccountDTO> output = new List<AccountDTO>();
             foreach (DataRow dr in input.Rows)
             {
@@ -34,8 +35,9 @@ namespace GiaLapATM.DAO
         }
         public AccountDTO getByAccountNo(int SoTheATM)
         {
-            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Account where AccountNo ='" + SoTheATM + "'");
-            AccountDTO model = new AccountDTO();
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Account where AccountNo ='" + SoTheATM + "'");//lấy ra account theo số thẻ ATM
+            AccountDTO model = new AccountDTO();    // list<object> trả ra
+            //check xem có bản ghi nào trả ra không nếu có thì convert về dạng object
             if (data.Rows.Count > 0)
             {
                 model = convertToObject(data).FirstOrDefault();
@@ -47,15 +49,15 @@ namespace GiaLapATM.DAO
             try
             {
                 //trừ tiền tài khoản đi
-                var from_account = getByAccountNo(fromthe);
-                from_account.Balance -= sotien;
-                var query_from_account = "update tbl_Account set Balance = " + from_account.Balance + " where AcountID = " + from_account.AcountID;
-                SQLConnect.Instance.ExecuteNonQuery(query_from_account);
+                var from_account = getByAccountNo(fromthe); //lấy thông tin account chuyển tiền đi
+                from_account.Balance -= sotien;//trừ số tiền trong tài khoản
+                var query_from_account = "update tbl_Account set Balance = " + from_account.Balance + " where AcountID = " + from_account.AcountID;// câu lệnh update vào DB
+                SQLConnect.Instance.ExecuteNonQuery(query_from_account);//update vào DB
                 //cộng tiền tài khoản đến
-                var to_account = getByAccountNo(tothe);
-                to_account.Balance += sotien;
-                var query_to_account = "update tbl_Account set Balance = " + to_account.Balance + " where AcountID = " + to_account.AcountID;
-                SQLConnect.Instance.ExecuteNonQuery(query_to_account);
+                var to_account = getByAccountNo(tothe); //lấy thông tin account nhận tiền
+                to_account.Balance += sotien;   //cộng thêm tiền vào tài khoản
+                var query_to_account = "update tbl_Account set Balance = " + to_account.Balance + " where AcountID = " + to_account.AcountID;// câu lệnh update vào DB
+                SQLConnect.Instance.ExecuteNonQuery(query_to_account);//update vào DB
 
                 return true;
             }

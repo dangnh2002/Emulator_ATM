@@ -18,6 +18,7 @@ namespace GiaLapATM.DAO
         }
         public List<LogTypeDTO> convertToObject(DataTable input)
         {
+            //hàm convert từ DataTable sang list<object>
             List<LogTypeDTO> output = new List<LogTypeDTO>();
             foreach (DataRow dr in input.Rows)
             {

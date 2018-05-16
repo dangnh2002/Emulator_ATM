@@ -9,8 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using Microsoft.Office.Interop.Excel;
-//using app = Microsoft.Office.Interop.Excel.Application;
 
 namespace GiaLapATM.GUI
 {
@@ -76,16 +74,19 @@ namespace GiaLapATM.GUI
             }
             else if(nameForm == "ThongTinChuyenKhoan")
             {
+                //thực hiện giao dịch
                 if(AccountBUS.ChuyenTien(SoThe,sothechuyenden,sotienchuyenden) && LogBUS.ChuyenTien(SoThe, sothechuyenden, sotienchuyenden, details))
                 {
+                    //nếu giao dịch thành công và lưu lại lịch sử giao dịch thành công thì trở về giao diện chính
                     GiaoDienChinh_Load();
                 }
             }
             if (nameForm == "SaoKeTaiKhoan")
             {
+                //in sao kê
                 var Form = Application.OpenForms[1];
                 DataGridView grid = Form.Controls["Grid_saoke"] as DataGridView;
-                exportExcel(grid);
+                //exportExcel(grid);
             }
             return;
         }
@@ -98,23 +99,23 @@ namespace GiaLapATM.GUI
 
             else if (nameForm.Equals("DangNhapMaPIN"))
             {
-                var Form = Application.OpenForms[1];
-                TextBox txt_MaPin = Form.Controls["txtNhapLieu"] as TextBox;
-                if (!string.IsNullOrEmpty(txt_MaPin.Text))
+                var Form = Application.OpenForms[1];    //khởi tạo form đang mở hiện tại
+                TextBox txt_MaPin = Form.Controls["txtNhapLieu"] as TextBox;    //lấy textbox nhập mã pin
+                if (!string.IsNullOrEmpty(txt_MaPin.Text))  //check null nhập mã pin
                 {
                     var mapin = int.Parse(txt_MaPin.Text);
-                    if (CardBUS.ktDangNhap(SoThe, mapin))
+                    if (CardBUS.ktDangNhap(SoThe, mapin))   //kiểm tra mã pin có đúng không 
                     {
-                        GiaoDienChinh_Load();
+                        GiaoDienChinh_Load();   //trở về giao diện chính
                     }
                     else
                     {
-                        DangNhapMaPIN_Load();
+                        DangNhapMaPIN_Load();   //load lại nhập mà pin
                     }
                 }
                 else
                 {
-                    DangNhapMaPIN_Load();
+                    DangNhapMaPIN_Load();   //load lại nhập mà pin
                 }
 
 
@@ -137,38 +138,38 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "NhapTaiKhoanChuyenDen")
             {
-                var Form = Application.OpenForms[1];
-                TextBox txt_SoTaiKhoan = Form.Controls["txtNhapLieu"] as TextBox;
-                if (!string.IsNullOrEmpty(txt_SoTaiKhoan.Text))
+                var Form = Application.OpenForms[1];    //khởi tạo form đang mở
+                TextBox txt_SoTaiKhoan = Form.Controls["txtNhapLieu"] as TextBox;   //lấy textbox nhập số tài khoản chuyển đến
+                if (!string.IsNullOrEmpty(txt_SoTaiKhoan.Text)) //check null số tài khoản
                 {
-                    sothechuyenden = int.Parse(txt_SoTaiKhoan.Text);
-                    var account = AccountBUS.getByAccountNo(sothechuyenden);
-                    if (account.AccountNo != null)
+                    sothechuyenden = int.Parse(txt_SoTaiKhoan.Text);    //lưu lại số tài khoản chuyển tiền đến
+                    var account = AccountBUS.getByAccountNo(sothechuyenden);    //lấy thông tin tài khoản chuyển tiền đến
+                    if (account.AccountNo != null)  //check null tài khoản chuyển tiền đến
                     {
-
-                        NhapSoTienChuyen_Load();
+                        NhapSoTienChuyen_Load();    //load form nhập số tiền cần chuyển
                     }
                     else
                     {
+                        //tài khoản chuyển tiền đến không tồn tại => load lại form nhập tài khoàn chuyển tiền
                         NhapTaiKhoanChuyenDen_Load();
                     }
                 }
                 else
                 {
-                    NhapTaiKhoanChuyenDen_Load();
+                    NhapTaiKhoanChuyenDen_Load();   //load lại form nhập số tài khoản chuyển tiền đến
                 }                
             }
             else if (nameForm == "NhapSoTienChuyen")
             {
-                var Form = Application.OpenForms[1];
-                TextBox txt_Sotienchuyen = Form.Controls["txtNhapLieu"] as TextBox;
-                if(!string.IsNullOrEmpty(txt_Sotienchuyen.Text))
+                var Form = Application.OpenForms[1];    //khởi tạo form đang mở
+                TextBox txt_Sotienchuyen = Form.Controls["txtNhapLieu"] as TextBox;   //lấy textbox nhập số tiền chuyển đến
+                if (!string.IsNullOrEmpty(txt_Sotienchuyen.Text))   //check null số tiền chuyển
                 {
-                    sotienchuyenden = int.Parse(txt_Sotienchuyen.Text);
-                    var account = AccountBUS.getByAccountNo(SoThe);
-                    if(sotienchuyenden <= account.Balance - 50000)
+                    sotienchuyenden = int.Parse(txt_Sotienchuyen.Text); //lưu lại số tiền cần chuyển
+                    var account = AccountBUS.getByAccountNo(SoThe); //lấy thông tin account từ số thẻ chuyển tiền
+                    if(sotienchuyenden <= account.Balance - 50000)  //check điều kiện số tiền chuyển đi <= số tiền trong thẻ - 50.000 duy trì thẻ
                     {
-                        ThongTinChuyenKhoan_Load();
+                        ThongTinChuyenKhoan_Load(); //mở form thông tin chuyển khoản
                     }
                     else
                     {
@@ -178,7 +179,7 @@ namespace GiaLapATM.GUI
                 }
                 else
                 {
-                    NhapSoTienChuyen_Load();
+                    NhapSoTienChuyen_Load();    //load lại form nhập số tiền chuyển khoản
                 }
             }
             else if (nameForm == "ThongTinChuyenKhoan")
@@ -187,25 +188,24 @@ namespace GiaLapATM.GUI
             }
             else if(nameForm == "DangNhapSoTheATM")
             {
-                var Form = Application.OpenForms[1];
-                TextBox txt_sothe = Form.Controls["txtNhapLieu"] as TextBox;
-                if(!string.IsNullOrEmpty(txt_sothe.Text))
+                var Form = Application.OpenForms[1];    //khởi tạo form đang mở
+                TextBox txt_sothe = Form.Controls["txtNhapLieu"] as TextBox;    //lấy textbox nhập số thẻ atm
+                if(!string.IsNullOrEmpty(txt_sothe.Text))   //check null số thẻ
                 {
-                    SoThe = int.Parse(txt_sothe.Text);
-                    var account = AccountBUS.getByAccountNo(SoThe);
-                    if(account.AccountNo == null)
+                    SoThe = int.Parse(txt_sothe.Text); //lưu lại số thẻ
+                    var account = AccountBUS.getByAccountNo(SoThe); // lấy thông tin account theo số thẻ
+                    if(account.AccountNo == null)   //check account có tồn tại hay không 
                     {
-                        // thông báo số thẻ không tồn tại
-                        DangNhapSoTheATM_Load();
+                        DangNhapSoTheATM_Load();    // load lại form nhập số thẻ
                     }
                     else
                     {
-                        ChonNgonNgu_Load();
+                        ChonNgonNgu_Load(); // load form chọn ngôn ngữ
                     }
                 }
                 else
                 {
-                    DangNhapSoTheATM_Load();
+                    DangNhapSoTheATM_Load();    // load lại form nhập số thẻ
                 }
             }
             return;
@@ -519,26 +519,26 @@ namespace GiaLapATM.GUI
         #endregion
 
         #region Export
-        public void exportExcel(DataGridView g)
-        {
-            Microsoft.Office.Interop.Excel.Application obj = new Microsoft.Office.Interop.Excel.Application();
-            obj.Application.Workbooks.Add(Type.Missing);
-            obj.Columns.ColumnWidth = 25;
-            for (int i = 1; i < g.Columns.Count + 1; i++)
-            {
-                obj.Cells[1, i] = g.Columns[i - 1].HeaderText;
-            }
-            for (int i = 0; i < g.Rows.Count; i++)
-            {
-                for (int j = 0; j < g.Columns.Count; j++)
-                {
-                    if (g.Rows[i].Cells[j].Value != null) { obj.Cells[i + 2, j + 1] = g.Rows[i].Cells[j].Value.ToString(); }
-                }
-            }
-            var duongDan = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            obj.ActiveWorkbook.SaveCopyAs(duongDan + @"\SaoKe.xlsx");
-            obj.ActiveWorkbook.Saved = true;
-        }
+        //public void exportExcel(DataGridView g)
+        //{
+        //    Microsoft.Office.Interop.Excel.Application obj = new Microsoft.Office.Interop.Excel.Application();
+        //    obj.Application.Workbooks.Add(Type.Missing);
+        //    obj.Columns.ColumnWidth = 25;
+        //    for (int i = 1; i < g.Columns.Count + 1; i++)
+        //    {
+        //        obj.Cells[1, i] = g.Columns[i - 1].HeaderText;
+        //    }
+        //    for (int i = 0; i < g.Rows.Count; i++)
+        //    {
+        //        for (int j = 0; j < g.Columns.Count; j++)
+        //        {
+        //            if (g.Rows[i].Cells[j].Value != null) { obj.Cells[i + 2, j + 1] = g.Rows[i].Cells[j].Value.ToString(); }
+        //        }
+        //    }
+        //    var duongDan = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+        //    obj.ActiveWorkbook.SaveCopyAs(duongDan + @"\SaoKe.xlsx");
+        //    obj.ActiveWorkbook.Saved = true;
+        //}
         #endregion
 
     }
