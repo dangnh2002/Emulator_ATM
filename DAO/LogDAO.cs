@@ -63,11 +63,11 @@ namespace GiaLapATM.DAO
         {
             AccountDTO account = AccountDAO.Account.getByAccountNo(sothe);
             cardDTO card = cardDAO.Card.getByAccountID(account.AcountID);
-            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Log where Cardno = " + card.CardNo);
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Log where Cardno = " + card.CardNo +" order by LogDate desc");
             List<LogDTO> model = new List<LogDTO>();
             if (data.Rows.Count > 0)
             {
-                model = convertToObject(data).Take(5).ToList();
+                model = convertToObject(data).Take(5).OrderBy(x=>x.LogDate).ToList();
             }
             return model;
         }

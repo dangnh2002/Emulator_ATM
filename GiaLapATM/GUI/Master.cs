@@ -165,7 +165,16 @@ namespace GiaLapATM.GUI
                 if(!string.IsNullOrEmpty(txt_Sotienchuyen.Text))
                 {
                     sotienchuyenden = int.Parse(txt_Sotienchuyen.Text);
-                    ThongTinChuyenKhoan_Load();
+                    var account = AccountBUS.getByAccountNo(SoThe);
+                    if(sotienchuyenden <= account.Balance - 50000)
+                    {
+                        ThongTinChuyenKhoan_Load();
+                    }
+                    else
+                    {
+                        //thông báo phải để lại 50.000 duy trì thẻ
+                        NhapSoTienChuyen_Load();
+                    }
                 }
                 else
                 {
@@ -183,7 +192,16 @@ namespace GiaLapATM.GUI
                 if(!string.IsNullOrEmpty(txt_sothe.Text))
                 {
                     SoThe = int.Parse(txt_sothe.Text);
-                    ChonNgonNgu_Load();
+                    var account = AccountBUS.getByAccountNo(SoThe);
+                    if(account.AccountNo == null)
+                    {
+                        // thông báo số thẻ không tồn tại
+                        DangNhapSoTheATM_Load();
+                    }
+                    else
+                    {
+                        ChonNgonNgu_Load();
+                    }
                 }
                 else
                 {
