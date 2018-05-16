@@ -165,7 +165,7 @@
             this.lbl_lephi.Name = "lbl_lephi";
             this.lbl_lephi.Size = new System.Drawing.Size(74, 25);
             this.lbl_lephi.TabIndex = 23;
-            this.lbl_lephi.Text = "0 VND";
+            this.lbl_lephi.Text = "0 VNĐ";
             // 
             // button2
             // 

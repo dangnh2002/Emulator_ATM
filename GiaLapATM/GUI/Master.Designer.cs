@@ -37,7 +37,6 @@
             this.btphai3 = new System.Windows.Forms.Button();
             this.btphai2 = new System.Windows.Forms.Button();
             this.btphai1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.bt1 = new System.Windows.Forms.Button();
             this.bt2 = new System.Windows.Forms.Button();
             this.bt3 = new System.Windows.Forms.Button();
@@ -145,16 +144,6 @@
             this.btphai1.TabIndex = 5;
             this.btphai1.UseVisualStyleBackColor = false;
             this.btphai1.Click += new System.EventHandler(this.btphai1_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button1.Location = new System.Drawing.Point(855, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 62);
-            this.button1.TabIndex = 9;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bt1
             // 
@@ -378,7 +367,6 @@
             this.Controls.Add(this.bt3);
             this.Controls.Add(this.bt2);
             this.Controls.Add(this.bt1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btphai4);
             this.Controls.Add(this.btphai3);
             this.Controls.Add(this.btphai2);
@@ -406,7 +394,6 @@
         private System.Windows.Forms.Button btphai3;
         private System.Windows.Forms.Button btphai2;
         private System.Windows.Forms.Button btphai1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bt1;
         private System.Windows.Forms.Button bt2;
         private System.Windows.Forms.Button bt3;

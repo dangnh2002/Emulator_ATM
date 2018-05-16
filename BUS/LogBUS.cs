@@ -19,11 +19,11 @@ namespace BUS
         {
             return LogDAO.Log.getByDate(FromDate, ToDate);
         }
-        public static List<LogDTO> get5Rows(int sothe)
+        public static List<LogDTO> get5Rows(double sothe)
         {
             return LogDAO.Log.get5Rows(sothe);
         }
-        public static DataTable get5Row(int sothe)
+        public static DataTable get5Row(double sothe)
         {
             return LogDAO.Log.get5Row(sothe);
         }

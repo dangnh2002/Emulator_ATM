@@ -9,7 +9,7 @@ namespace BUS
 {
     public class CardBUS
     {
-        public static bool ktDangNhap(int soTheATM, int soPIN)
+        public static bool ktDangNhap(double soTheATM, double soPIN)
         {
             return cardDAO.Card.ktDangNhap(soTheATM, soPIN);
         }

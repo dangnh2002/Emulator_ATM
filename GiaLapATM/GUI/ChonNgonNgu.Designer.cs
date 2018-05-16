@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.English = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,9 +64,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(306, 243);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 20);
+            this.label3.Size = new System.Drawing.Size(165, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "(Ấn ESC để hủy bỏ)";
+            this.label3.Text = "(Ấn Cancel để hủy bỏ)";
             // 
             // button7
             // 
@@ -77,8 +78,21 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(212, 52);
             this.button7.TabIndex = 11;
-            this.button7.Text = "Việt Nam";
+            this.button7.Text = "Tiếng Việt";
             this.button7.UseVisualStyleBackColor = false;
+            // 
+            // English
+            // 
+            this.English.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.English.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.English.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
+            this.English.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.English.Location = new System.Drawing.Point(552, 457);
+            this.English.Name = "English";
+            this.English.Size = new System.Drawing.Size(212, 52);
+            this.English.TabIndex = 12;
+            this.English.Text = "English";
+            this.English.UseVisualStyleBackColor = false;
             // 
             // ChonNgonNgu
             // 
@@ -86,6 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.English);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -104,5 +119,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button English;
     }
 }

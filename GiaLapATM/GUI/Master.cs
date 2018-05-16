@@ -17,7 +17,7 @@ namespace GiaLapATM.GUI
     public partial class Master : Form
     {
         public static string nameForm = "", details = "";
-        public static int SoThe = 0;
+        public static double SoThe = 0;
         public static double sothechuyenden = 0, sotienchuyenden = 0;
         public static DangNhapMaPIN DNPIN = new DangNhapMaPIN();
         public Master()
@@ -119,7 +119,7 @@ namespace GiaLapATM.GUI
                 TextBox txt_MaPin = Form.Controls["txtNhapLieu"] as TextBox;    //lấy textbox nhập mã pin
                 if (!string.IsNullOrEmpty(txt_MaPin.Text))  //check null nhập mã pin
                 {
-                    var mapin = int.Parse(txt_MaPin.Text);
+                    var mapin = double.Parse(txt_MaPin.Text);
                     if (CardBUS.ktDangNhap(SoThe, mapin))   //kiểm tra mã pin có đúng không 
                     {
                         GiaoDienChinh_Load();   //trở về giao diện chính
@@ -166,6 +166,9 @@ namespace GiaLapATM.GUI
                     {
                         //tài khoản chuyển tiền đến không tồn tại => load lại form nhập tài khoàn chuyển tiền
                         NhapTaiKhoanChuyenDen_Load();
+                        var Form_NhapTaiKhoan = Application.OpenForms[1];
+                        Label txt_alert = Form_NhapTaiKhoan.Controls["lbl_alert"] as Label;
+                        txt_alert.Visible = true;
                     }
                 }
                 else
@@ -179,7 +182,15 @@ namespace GiaLapATM.GUI
                 TextBox txt_Sotienchuyen = Form.Controls["txtNhapLieu"] as TextBox;   //lấy textbox nhập số tiền chuyển đến
                 if (!string.IsNullOrEmpty(txt_Sotienchuyen.Text))   //check null số tiền chuyển
                 {
-                    sotienchuyenden = int.Parse(txt_Sotienchuyen.Text); //lưu lại số tiền cần chuyển
+                    if(double.Parse(txt_Sotienchuyen.Text)<2000)
+                    {
+                        //thông báo số tiền chuyển khoản phải lớn hơn 20,000VNĐ
+                        NhapSoTienChuyen_Load();
+                        var Form_Nhapsotien = Application.OpenForms[1];
+                        Label txt_alert = Form_Nhapsotien.Controls["lbl_alert2"] as Label;
+                        txt_alert.Visible = true;
+                    }
+                    sotienchuyenden = double.Parse(txt_Sotienchuyen.Text); //lưu lại số tiền cần chuyển
                     var account = AccountBUS.getByAccountNo(SoThe); //lấy thông tin account từ số thẻ chuyển tiền
                     if(sotienchuyenden <= account.Balance - 50000)  //check điều kiện số tiền chuyển đi <= số tiền trong thẻ - 50.000 duy trì thẻ
                     {
@@ -189,6 +200,9 @@ namespace GiaLapATM.GUI
                     {
                         //thông báo phải để lại 50.000 duy trì thẻ
                         NhapSoTienChuyen_Load();
+                        var Form_Nhapsotien = Application.OpenForms[1];
+                        Label txt_alert = Form_Nhapsotien.Controls["lbl_alert"] as Label;
+                        txt_alert.Visible = true;
                     }
                 }
                 else
@@ -206,7 +220,7 @@ namespace GiaLapATM.GUI
                 TextBox txt_sothe = Form.Controls["txtNhapLieu"] as TextBox;    //lấy textbox nhập số thẻ atm
                 if(!string.IsNullOrEmpty(txt_sothe.Text))   //check null số thẻ
                 {
-                    SoThe = int.Parse(txt_sothe.Text); //lưu lại số thẻ
+                    SoThe = double.Parse(txt_sothe.Text); //lưu lại số thẻ
                     var account = AccountBUS.getByAccountNo(SoThe); // lấy thông tin account theo số thẻ
                     if(account.AccountNo == null)   //check account có tồn tại hay không 
                     {
@@ -318,14 +332,6 @@ namespace GiaLapATM.GUI
             chuyenKhoanThanhCong.Show();
             nameForm = "ChuyenKhoanThanhCong";
             btHoaDon.BackColor = Color.White;
-
-            var account = AccountBUS.getByAccountNo(SoThe);
-            var Form = Application.OpenForms[1];
-            Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
-            lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
-            Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
-            lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
-
         }
         public void SoDuTaiKhoan_Load()
         {
@@ -430,7 +436,7 @@ namespace GiaLapATM.GUI
             Label lbl_sotaikhoan = Form.Controls["lbl_sotaikhoan"] as Label;
             lbl_sotaikhoan.Text = account.AccountNo;
             Label lbl_sotienchuyen = Form.Controls["lbl_sotienchuyen"] as Label;
-            lbl_sotienchuyen.Text = sotienchuyenden.ToString("0,000");
+            lbl_sotienchuyen.Text = sotienchuyenden.ToString("0,000") + "VNĐ";
 
 
 

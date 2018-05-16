@@ -32,6 +32,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbl_alert = new System.Windows.Forms.Label();
+            this.lbl_alert2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button6
@@ -79,12 +81,38 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Bạn hãy nhập số tiền:";
             // 
+            // lbl_alert
+            // 
+            this.lbl_alert.AutoSize = true;
+            this.lbl_alert.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert.Location = new System.Drawing.Point(92, 193);
+            this.lbl_alert.Name = "lbl_alert";
+            this.lbl_alert.Size = new System.Drawing.Size(580, 37);
+            this.lbl_alert.TabIndex = 26;
+            this.lbl_alert.Text = "Số tiền còn lại phải lớn hơn 50,000VNĐ";
+            this.lbl_alert.Visible = false;
+            // 
+            // lbl_alert2
+            // 
+            this.lbl_alert2.AutoSize = true;
+            this.lbl_alert2.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert2.Location = new System.Drawing.Point(71, 243);
+            this.lbl_alert2.Name = "lbl_alert2";
+            this.lbl_alert2.Size = new System.Drawing.Size(616, 37);
+            this.lbl_alert2.TabIndex = 27;
+            this.lbl_alert2.Text = "Số tiền giao dịch phải lớn hơn 20,000VNĐ";
+            this.lbl_alert2.Visible = false;
+            // 
             // NhapSoTienChuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.lbl_alert2);
+            this.Controls.Add(this.lbl_alert);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.txtNhapLieu);
@@ -103,5 +131,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox txtNhapLieu;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_alert;
+        private System.Windows.Forms.Label lbl_alert2;
     }
 }

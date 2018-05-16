@@ -32,6 +32,7 @@
             this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.lbl_alert = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -81,12 +82,25 @@
             this.button5.Text = "Tiếp Tục";
             this.button5.UseVisualStyleBackColor = false;
             // 
+            // lbl_alert
+            // 
+            this.lbl_alert.AutoSize = true;
+            this.lbl_alert.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert.Location = new System.Drawing.Point(180, 195);
+            this.lbl_alert.Name = "lbl_alert";
+            this.lbl_alert.Size = new System.Drawing.Size(390, 37);
+            this.lbl_alert.TabIndex = 21;
+            this.lbl_alert.Text = "Số tài khoản không tồn tại";
+            this.lbl_alert.Visible = false;
+            // 
             // NhapTaiKhoanChuyenDen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.lbl_alert);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.txtNhapLieu);
@@ -105,5 +119,6 @@
         private System.Windows.Forms.TextBox txtNhapLieu;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lbl_alert;
     }
 }

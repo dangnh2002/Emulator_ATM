@@ -63,7 +63,7 @@ namespace DAO
                 return false;
             }
         }
-        public List<LogDTO> get5Rows(int sothe)
+        public List<LogDTO> get5Rows(double sothe)
         {
             //lấy ra 5 giao dịch gần nhất
             AccountDTO account = AccountDAO.Account.getByAccountNo(sothe);  // lấy thông tin account theo số thẻ
@@ -81,7 +81,7 @@ namespace DAO
             }
             return model;
         }
-        public DataTable get5Row (int sothe)
+        public DataTable get5Row (double sothe)
         {
             //lấy ra 5 giao dịch gần nhất
             AccountDTO account = AccountDAO.Account.getByAccountNo(sothe);  // lấy thông tin account theo số thẻ
