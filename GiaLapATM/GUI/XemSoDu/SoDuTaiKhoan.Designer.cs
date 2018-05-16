@@ -36,6 +36,7 @@
             this.lbl_SoDuThucTe = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.btCo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -130,12 +131,26 @@
             this.btCo.Text = "Có";
             this.btCo.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(552, 283);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(212, 52);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "In hóa đơn";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // SoDuTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btCo);
             this.Controls.Add(this.lbl_SoDuThucTe);
@@ -162,5 +177,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btCo;
         public System.Windows.Forms.Label lbl_SoDuThucTe;
+        private System.Windows.Forms.Button button1;
     }
 }

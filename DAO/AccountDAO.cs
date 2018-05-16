@@ -33,7 +33,7 @@ namespace GiaLapATM.DAO
             }
             return output;
         }
-        public AccountDTO getByAccountNo(int SoTheATM)
+        public AccountDTO getByAccountNo(double SoTheATM)
         {
             DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Account where AccountNo ='" + SoTheATM + "'");//lấy ra account theo số thẻ ATM
             AccountDTO model = new AccountDTO();    // list<object> trả ra
@@ -44,7 +44,7 @@ namespace GiaLapATM.DAO
             }
             return model;
         }
-        public bool ChuyenTien(int fromthe, int tothe, int sotien)
+        public bool ChuyenTien(double fromthe, double tothe, double sotien)
         {
             try
             {

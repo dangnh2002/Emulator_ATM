@@ -10,11 +10,11 @@ namespace BUS
 {
     public class AccountBUS
     {
-        public static AccountDTO getByAccountNo(int SoTheATM)
+        public static AccountDTO getByAccountNo(double SoTheATM)
         {
             return AccountDAO.Account.getByAccountNo(SoTheATM);
         }
-        public static bool ChuyenTien(int fromthe, int tothe, int sotien)
+        public static bool ChuyenTien(double fromthe, double tothe, double sotien)
         {
             return AccountDAO.Account.ChuyenTien(fromthe, tothe, sotien);
         }

@@ -1,5 +1,6 @@
 ﻿using BUS;
 using GiaLapATM.DTO;
+using GiaLapATM.GUI.ChuyenKhoan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +17,8 @@ namespace GiaLapATM.GUI
     public partial class Master : Form
     {
         public static string nameForm = "", details = "";
-        public static int SoThe = 0, sothechuyenden = 0, sotienchuyenden = 0;
+        public static int SoThe = 0;
+        public static double sothechuyenden = 0, sotienchuyenden = 0;
         public static DangNhapMaPIN DNPIN = new DangNhapMaPIN();
         public Master()
         {
@@ -42,7 +45,7 @@ namespace GiaLapATM.GUI
         {
             if (nameForm == "GiaoDienChinh")
             {
-                XemSoDuTaiKhoan_Load();
+                SoDuTaiKhoan_Load();
             }
             return;
         }
@@ -78,15 +81,28 @@ namespace GiaLapATM.GUI
                 if(AccountBUS.ChuyenTien(SoThe,sothechuyenden,sotienchuyenden) && LogBUS.ChuyenTien(SoThe, sothechuyenden, sotienchuyenden, details))
                 {
                     //nếu giao dịch thành công và lưu lại lịch sử giao dịch thành công thì trở về giao diện chính
-                    GiaoDienChinh_Load();
+                    ChuyenKhoanThanhCong_Load();
                 }
             }
-            if (nameForm == "SaoKeTaiKhoan")
+            else if (nameForm == "SaoKeTaiKhoan")
             {
                 //in sao kê
-                var Form = Application.OpenForms[1];
-                DataGridView grid = Form.Controls["Grid_saoke"] as DataGridView;
+                //var Form = Application.OpenForms[1];
+                //DataGridView grid = Form.Controls["Grid_saoke"] as DataGridView;
                 //exportExcel(grid);
+                //btHoaDon.BackColor = Color.White;
+                btHoaDon.BackColor = Color.Gray;
+               // btHoaDon.BackColor = Color.White;
+            }
+            else if (nameForm == "SoDuTaiKhoan")
+            {
+                //in sao kê
+                //var Form = Application.OpenForms[1];
+                //DataGridView grid = Form.Controls["Grid_saoke"] as DataGridView;
+                //exportExcel(grid);
+                //btHoaDon.BackColor = Color.White;
+                btHoaDon.BackColor = Color.Gray;
+                // btHoaDon.BackColor = Color.White;
             }
             return;
         }
@@ -117,22 +133,20 @@ namespace GiaLapATM.GUI
                 {
                     DangNhapMaPIN_Load();   //load lại nhập mà pin
                 }
-
-
             }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
-                InHoaDon_Load();
+                btHoaDon.BackColor = Color.Gray;
             }
             else if (nameForm.Equals("SoDuTaiKhoan"))
             {
                 GiaoDienChinh_Load();
             }
-            else if (nameForm.Equals("XemSaoKeTaiKhoan"))
-            {
-                InHoaDon_Load();
-            }
             else if (nameForm.Equals("SaoKeTaiKhoan"))
+            {
+                GiaoDienChinh_Load();
+            }
+            else if (nameForm.Equals("ChuyenKhoanThanhCong"))
             {
                 GiaoDienChinh_Load();
             }
@@ -142,7 +156,7 @@ namespace GiaLapATM.GUI
                 TextBox txt_SoTaiKhoan = Form.Controls["txtNhapLieu"] as TextBox;   //lấy textbox nhập số tài khoản chuyển đến
                 if (!string.IsNullOrEmpty(txt_SoTaiKhoan.Text)) //check null số tài khoản
                 {
-                    sothechuyenden = int.Parse(txt_SoTaiKhoan.Text);    //lưu lại số tài khoản chuyển tiền đến
+                    sothechuyenden = double.Parse(txt_SoTaiKhoan.Text);    //lưu lại số tài khoản chuyển tiền đến
                     var account = AccountBUS.getByAccountNo(sothechuyenden);    //lấy thông tin tài khoản chuyển tiền đến
                     if (account.AccountNo != null)  //check null tài khoản chuyển tiền đến
                     {
@@ -220,9 +234,9 @@ namespace GiaLapATM.GUI
             {
                 SoDuTaiKhoan_Load();
             }
-            else if (nameForm.Equals("XemSaoKeTaiKhoan"))
+            else if (nameForm.Equals("SaoKeTaiKhoan"))
             {
-                SaoKeTaiKhoan_Load();
+                DangNhapSoTheATM_Load();
             }
             else if (nameForm == "NhapTaiKhoanChuyenDen")
             {
@@ -235,6 +249,14 @@ namespace GiaLapATM.GUI
             else if (nameForm == "ThongTinChuyenKhoan")
             {
                 GiaoDienChinh_Load();
+            }
+            else if (nameForm == "SoDuTaiKhoan")
+            {
+                DangNhapSoTheATM_Load();
+            }
+            else if (nameForm == "ChuyenKhoanThanhCong")
+            {
+                DangNhapSoTheATM_Load();
             }
             return;
         }
@@ -274,6 +296,7 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(giaoDienChinh);
             giaoDienChinh.Show();
             nameForm = "GiaoDienChinh";
+            btHoaDon.BackColor = Color.White;
         }
         public void RutTien_Load()
         {
@@ -285,15 +308,24 @@ namespace GiaLapATM.GUI
             rutTien.Show();
             nameForm = "RutTien";
         }
-        public void XemSoDuTaiKhoan_Load()
+        public void ChuyenKhoanThanhCong_Load()
         {
             Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
-            XemSoDuTaiKhoan xemSoDuTaiKhoan = new XemSoDuTaiKhoan();
-            xemSoDuTaiKhoan.TopLevel = false;
-            this.pnMaster.Controls.Add(xemSoDuTaiKhoan);
-            xemSoDuTaiKhoan.Show();
-            nameForm = "XemSoDuTaiKhoan";
+            ChuyenKhoanThanhCong chuyenKhoanThanhCong = new ChuyenKhoanThanhCong();
+            chuyenKhoanThanhCong.TopLevel = false;
+            this.pnMaster.Controls.Add(chuyenKhoanThanhCong);
+            chuyenKhoanThanhCong.Show();
+            nameForm = "ChuyenKhoanThanhCong";
+            btHoaDon.BackColor = Color.White;
+
+            var account = AccountBUS.getByAccountNo(SoThe);
+            var Form = Application.OpenForms[1];
+            Label lbl_SoDuChoPhep = Form.Controls["lbl_SoDuChoPhep"] as Label;
+            lbl_SoDuChoPhep.Text = account.Balance.ToString("0,000");
+            Label lbl_SoDuThucTe = Form.Controls["lbl_SoDuThucTe"] as Label;
+            lbl_SoDuThucTe.Text = account.Balance.ToString("0,000");
+
         }
         public void SoDuTaiKhoan_Load()
         {
@@ -304,6 +336,7 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(soDuTaiKhoan);
             soDuTaiKhoan.Show();
             nameForm = "SoDuTaiKhoan";
+            btHoaDon.BackColor = Color.White;
 
             var account = AccountBUS.getByAccountNo(SoThe);
             var Form = Application.OpenForms[1];
@@ -403,6 +436,7 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(dangNhapSoTheATM);
             dangNhapSoTheATM.Show();
             nameForm = "DangNhapSoTheATM";
+            btHoaDon.BackColor = Color.White;
         }
         #endregion
 
@@ -495,7 +529,7 @@ namespace GiaLapATM.GUI
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            GiaoDienChinh_Load();
+            DangNhapSoTheATM_Load();
             return;
         }
 

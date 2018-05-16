@@ -10,7 +10,7 @@ namespace BUS
 {
     public class LogBUS
     {
-        public static bool ChuyenTien(int fromthe, int tothe, int sotien, string details)
+        public static bool ChuyenTien(double fromthe, double tothe, double sotien, string details)
         {
             return LogDAO.Log.ChuyenTien(fromthe, tothe, sotien, details);
         }

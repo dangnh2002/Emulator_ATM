@@ -16,5 +16,10 @@ namespace GiaLapATM.GUI
         {
             InitializeComponent();
         }
+
+        private void SaoKeTaiKhoan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

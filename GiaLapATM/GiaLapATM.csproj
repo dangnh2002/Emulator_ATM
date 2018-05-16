@@ -58,6 +58,12 @@
     <Compile Include="GUI\ChonNgonNgu.Designer.cs">
       <DependentUpon>ChonNgonNgu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ChuyenKhoan\ChuyenKhoanThanhCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ChuyenKhoan\ChuyenKhoanThanhCong.Designer.cs">
+      <DependentUpon>ChuyenKhoanThanhCong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ChuyenKhoan\NhapSoTienChuyen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,16 +136,13 @@
     <Compile Include="GUI\XemSoDu\SoDuTaiKhoan.Designer.cs">
       <DependentUpon>SoDuTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\XemSoDu\XemSoDuTaiKhoan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\XemSoDu\XemSoDuTaiKhoan.Designer.cs">
-      <DependentUpon>XemSoDuTaiKhoan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\ChonNgonNgu.resx">
       <DependentUpon>ChonNgonNgu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ChuyenKhoan\ChuyenKhoanThanhCong.resx">
+      <DependentUpon>ChuyenKhoanThanhCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ChuyenKhoan\NhapSoTienChuyen.resx">
       <DependentUpon>NhapSoTienChuyen.cs</DependentUpon>
@@ -176,9 +179,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\XemSoDu\SoDuTaiKhoan.resx">
       <DependentUpon>SoDuTaiKhoan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\XemSoDu\XemSoDuTaiKhoan.resx">
-      <DependentUpon>XemSoDuTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

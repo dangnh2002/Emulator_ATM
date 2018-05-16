@@ -35,7 +35,7 @@ namespace GiaLapATM.DAO
             }
             return output;
         }
-        public bool ChuyenTien(int fromthe, int tothe, int sotien, string details)
+        public bool ChuyenTien(double fromthe, double tothe, double sotien, string details)
         {
             try
             {

@@ -9,7 +9,7 @@ namespace GiaLapATM.DTO
     public class AccountDTO
     {
         public int AcountID { get; set; }
-        public int Balance { get; set; }
+        public double Balance { get; set; }
         public string AccountNo { get; set; }
         public int CustID { get; set; }
         public int ODID { get; set; }

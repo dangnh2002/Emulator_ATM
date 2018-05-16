@@ -13,8 +13,8 @@ namespace GiaLapATM.DTO
         public int CardNo { get; set; }
         public int ATMID { get; set; }
         public DateTime LogDate { get; set; }
-        public int Amount { get; set; }
+        public double Amount { get; set; }
         public string Details { get; set; }
-        public int CardToNo { get; set; }
+        public double CardToNo { get; set; }
     }
 }

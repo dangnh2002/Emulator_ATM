@@ -328,27 +328,30 @@
             // 
             // btTien
             // 
+            this.btTien.BackColor = System.Drawing.Color.White;
             this.btTien.Location = new System.Drawing.Point(125, 546);
             this.btTien.Name = "btTien";
             this.btTien.Size = new System.Drawing.Size(677, 23);
             this.btTien.TabIndex = 26;
-            this.btTien.UseVisualStyleBackColor = true;
+            this.btTien.UseVisualStyleBackColor = false;
             // 
             // btThe
             // 
+            this.btThe.BackColor = System.Drawing.Color.White;
             this.btThe.Location = new System.Drawing.Point(936, 115);
             this.btThe.Name = "btThe";
             this.btThe.Size = new System.Drawing.Size(214, 23);
             this.btThe.TabIndex = 27;
-            this.btThe.UseVisualStyleBackColor = true;
+            this.btThe.UseVisualStyleBackColor = false;
             // 
             // btHoaDon
             // 
+            this.btHoaDon.BackColor = System.Drawing.Color.White;
             this.btHoaDon.Location = new System.Drawing.Point(936, 144);
             this.btHoaDon.Name = "btHoaDon";
             this.btHoaDon.Size = new System.Drawing.Size(214, 23);
             this.btHoaDon.TabIndex = 28;
-            this.btHoaDon.UseVisualStyleBackColor = true;
+            this.btHoaDon.UseVisualStyleBackColor = false;
             // 
             // Master
             // 

@@ -36,15 +36,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Grid_saoke = new System.Windows.Forms.DataGridView();
-            this.logDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.logDTOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logDTOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.logDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -80,9 +80,8 @@
             this.lbl_sodu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_sodu.Location = new System.Drawing.Point(265, 125);
             this.lbl_sodu.Name = "lbl_sodu";
-            this.lbl_sodu.Size = new System.Drawing.Size(98, 25);
+            this.lbl_sodu.Size = new System.Drawing.Size(0, 25);
             this.lbl_sodu.TabIndex = 16;
-            this.lbl_sodu.Text = "123 VND";
             // 
             // label4
             // 
@@ -131,25 +130,8 @@
             this.Grid_saoke.Location = new System.Drawing.Point(12, 153);
             this.Grid_saoke.Name = "Grid_saoke";
             this.Grid_saoke.ReadOnly = true;
-            this.Grid_saoke.Size = new System.Drawing.Size(519, 196);
+            this.Grid_saoke.Size = new System.Drawing.Size(495, 196);
             this.Grid_saoke.TabIndex = 20;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(552, 281);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(212, 52);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "In hóa đơn";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // logDTOBindingSource1
-            // 
-            this.logDTOBindingSource1.DataSource = typeof(GiaLapATM.DTO.LogDTO);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -175,6 +157,23 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 200;
             // 
+            // logDTOBindingSource1
+            // 
+            this.logDTOBindingSource1.DataSource = typeof(GiaLapATM.DTO.LogDTO);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Olive;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(552, 281);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(212, 52);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "In hóa đơn";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // SaoKeTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,9 +191,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SaoKeTaiKhoan";
             this.Text = "SaoKeTaiKhoan";
+            this.Load += new System.EventHandler(this.SaoKeTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
