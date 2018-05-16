@@ -28,23 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbl_sodu = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Grid_saoke = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logDTOBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.logDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).BeginInit();
+            this.grtest = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grtest)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -116,51 +108,6 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Sao kê tài khoản";
             // 
-            // Grid_saoke
-            // 
-            this.Grid_saoke.AllowUserToAddRows = false;
-            this.Grid_saoke.AllowUserToDeleteRows = false;
-            this.Grid_saoke.AutoGenerateColumns = false;
-            this.Grid_saoke.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Grid_saoke.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.Grid_saoke.DataSource = this.logDTOBindingSource1;
-            this.Grid_saoke.Location = new System.Drawing.Point(12, 153);
-            this.Grid_saoke.Name = "Grid_saoke";
-            this.Grid_saoke.ReadOnly = true;
-            this.Grid_saoke.Size = new System.Drawing.Size(495, 196);
-            this.Grid_saoke.TabIndex = 20;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "LogDate";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ngày giao dịch";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Amount";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Số tiền giao dịch";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Details";
-            this.dataGridViewTextBoxColumn3.HeaderText = "nội dung giao dịch";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // logDTOBindingSource1
-            // 
-            this.logDTOBindingSource1.DataSource = typeof(GiaLapATM.DTO.LogDTO);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -174,14 +121,22 @@
             this.button2.Text = "In hóa đơn";
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // grtest
+            // 
+            this.grtest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grtest.Location = new System.Drawing.Point(12, 153);
+            this.grtest.Name = "grtest";
+            this.grtest.Size = new System.Drawing.Size(507, 180);
+            this.grtest.TabIndex = 22;
+            // 
             // SaoKeTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.grtest);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.Grid_saoke);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_sodu);
@@ -192,9 +147,7 @@
             this.Name = "SaoKeTaiKhoan";
             this.Text = "SaoKeTaiKhoan";
             this.Load += new System.EventHandler(this.SaoKeTaiKhoan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Grid_saoke)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logDTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grtest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,8 +161,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView Grid_saoke;
-        private System.Windows.Forms.BindingSource logDTOBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn logDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn detailsDataGridViewTextBoxColumn;
@@ -217,6 +168,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.BindingSource logDTOBindingSource1;
+        private System.Windows.Forms.DataGridView grtest;
     }
 }

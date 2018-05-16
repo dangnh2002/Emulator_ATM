@@ -1,10 +1,11 @@
-﻿using GiaLapATM.DAO;
-using GiaLapATM.DTO;
+﻿using DTO;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace BUS
 {
@@ -21,6 +22,10 @@ namespace BUS
         public static List<LogDTO> get5Rows(int sothe)
         {
             return LogDAO.Log.get5Rows(sothe);
+        }
+        public static DataTable get5Row(int sothe)
+        {
+            return LogDAO.Log.get5Row(sothe);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using BUS;
-using GiaLapATM.DTO;
+using DTO;
 using GiaLapATM.GUI.ChuyenKhoan;
 using System;
 using System.Collections.Generic;
@@ -366,10 +366,21 @@ namespace GiaLapATM.GUI
             saoKeTaiKhoan.Show();
             nameForm = "SaoKeTaiKhoan";
             var Form = Application.OpenForms[1];
-            DataGridView grid = Form.Controls["Grid_saoke"] as DataGridView;
-            grid.DataSource = LogBUS.get5Rows(SoThe);
             Label lbl_sodu = Form.Controls["lbl_sodu"] as Label;
             lbl_sodu.Text = AccountBUS.getByAccountNo(SoThe).Balance.ToString("0,000");
+            DataGridView gridview = Form.Controls["grtest"] as DataGridView;
+            gridview.DataSource = LogBUS.get5Row(SoThe);
+            gridview.Columns[0].Visible = false;
+            gridview.Columns[1].Visible = false;
+            gridview.Columns[2].Visible = false;
+            gridview.Columns[3].Visible = false;
+            gridview.Columns[7].Visible = false;
+            gridview.Columns[4].HeaderText = "Ngày giao dịch";
+            gridview.Columns[4].Width = 130;
+            gridview.Columns[5].HeaderText = "Số tiền giao dịch";
+            gridview.Columns[5].Width = 130;
+            gridview.Columns[6].HeaderText = "Nội dung giao dịch";
+            gridview.Columns[6].Width = 190;
         }
         public void DoiMaPIN_Load()
         {
@@ -551,29 +562,5 @@ namespace GiaLapATM.GUI
             return;       
         }
         #endregion
-
-        #region Export
-        //public void exportExcel(DataGridView g)
-        //{
-        //    Microsoft.Office.Interop.Excel.Application obj = new Microsoft.Office.Interop.Excel.Application();
-        //    obj.Application.Workbooks.Add(Type.Missing);
-        //    obj.Columns.ColumnWidth = 25;
-        //    for (int i = 1; i < g.Columns.Count + 1; i++)
-        //    {
-        //        obj.Cells[1, i] = g.Columns[i - 1].HeaderText;
-        //    }
-        //    for (int i = 0; i < g.Rows.Count; i++)
-        //    {
-        //        for (int j = 0; j < g.Columns.Count; j++)
-        //        {
-        //            if (g.Rows[i].Cells[j].Value != null) { obj.Cells[i + 2, j + 1] = g.Rows[i].Cells[j].Value.ToString(); }
-        //        }
-        //    }
-        //    var duongDan = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-        //    obj.ActiveWorkbook.SaveCopyAs(duongDan + @"\SaoKe.xlsx");
-        //    obj.ActiveWorkbook.Saved = true;
-        //}
-        #endregion
-
     }
 }

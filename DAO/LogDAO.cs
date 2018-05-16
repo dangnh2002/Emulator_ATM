@@ -1,4 +1,4 @@
-﻿using GiaLapATM.DTO;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GiaLapATM.DAO
+namespace DAO
 {
     public class LogDAO
     {
@@ -80,6 +80,17 @@ namespace GiaLapATM.DAO
                 model = convertToObject(data).Take(5).OrderBy(x=>x.LogDate).ToList();// lấy ra 5 bản ghi và sắp xếp lại theo LogDate
             }
             return model;
+        }
+        public DataTable get5Row (int sothe)
+        {
+            //lấy ra 5 giao dịch gần nhất
+            AccountDTO account = AccountDAO.Account.getByAccountNo(sothe);  // lấy thông tin account theo số thẻ
+            cardDTO card = cardDAO.Card.getByAccountID(account.AcountID);   // lấy thông tin thẻ theo accoutID
+            //câu sql lấy ra toàn bộ giao dịch theo số thẻ được sắp xếp ngược theo LogDate
+            var query = "select * from tbl_Log where Cardno = " + card.CardNo + " order by LogDate desc";
+            //thực hiện câu lênh query bên trên
+            DataTable data = SQLConnect.Instance.ExecuteQuery(query);
+            return data;
         }
         public List<LogDTO> getByDate(DateTime FromDate, DateTime ToDate)
         {
