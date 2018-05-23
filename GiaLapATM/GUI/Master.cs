@@ -189,6 +189,10 @@ namespace GiaLapATM.GUI
             {
                 GiaoDienChinh_Load();
             }
+            else if (nameForm.Equals("DoiMaPINThanhCong"))
+            {
+                GiaoDienChinh_Load();
+            }
             else if (nameForm == "NhapTaiKhoanChuyenDen")
             {
                 var Form = Application.OpenForms[1];    //khởi tạo form đang mở
@@ -294,6 +298,10 @@ namespace GiaLapATM.GUI
             {
                 DangNhapSoTheATM_Load();
             }
+            else if (nameForm == "DoiMaPINThanhCong")
+            {
+                DangNhapSoTheATM_Load();
+            }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
                 SoDuTaiKhoan_Load();
@@ -364,6 +372,16 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(giaoDichThanhCong);
             giaoDichThanhCong.Show();
             nameForm = "GiaoDichThanhCong";
+        }
+        private void DoiMaPINThanhCong_Load()
+        {
+            Application.OpenForms[1].Close();
+            this.pnMaster.Controls.Clear();
+            GUI.RutTien.DoiMaPINThanhCong doiMaPINThanhCong = new GUI.RutTien.DoiMaPINThanhCong();
+            doiMaPINThanhCong.TopLevel = false;
+            this.pnMaster.Controls.Add(doiMaPINThanhCong);
+            doiMaPINThanhCong.Show();
+            nameForm = "DoiMaPINThanhCong";
         }
         private void DangNhapMaPIN_Load()
         {
@@ -531,7 +549,7 @@ namespace GiaLapATM.GUI
         }
         #endregion
 
-        #region bàn phím
+        #region Bàn phím
         private bool phimSo(string phim)
         {
             try
