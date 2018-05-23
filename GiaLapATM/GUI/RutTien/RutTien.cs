@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GiaLapATM.GUI
+namespace GiaLapATM.GUI.RutTien
 {
     public partial class RutTien : Form
     {

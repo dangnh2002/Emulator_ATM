@@ -1,4 +1,4 @@
-﻿namespace GiaLapATM.GUI
+﻿namespace GiaLapATM.GUI.RutTien
 {
     partial class RutTien
     {

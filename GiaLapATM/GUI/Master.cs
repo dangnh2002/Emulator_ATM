@@ -469,7 +469,7 @@ namespace GiaLapATM.GUI
         {
             Application.OpenForms[1].Close();
             this.pnMaster.Controls.Clear();
-            GUI.RutTien.DoiMaPINThanhCong doiMaPINThanhCong = new GUI.RutTien.DoiMaPINThanhCong();
+            GUI.DoiPin.DoiMaPINThanhCong doiMaPINThanhCong = new GUI.DoiPin.DoiMaPINThanhCong();
             doiMaPINThanhCong.TopLevel = false;
             this.pnMaster.Controls.Add(doiMaPINThanhCong);
             doiMaPINThanhCong.Show();
@@ -500,7 +500,7 @@ namespace GiaLapATM.GUI
         {
             Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
-            RutTien rutTien = new RutTien();
+            GUI.RutTien.RutTien rutTien = new GUI.RutTien.RutTien();
             rutTien.TopLevel = false;
             this.pnMaster.Controls.Add(rutTien);
             rutTien.Show();
