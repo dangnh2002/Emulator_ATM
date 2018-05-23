@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lbl_alert = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,9 +50,11 @@
             this.txtNhapLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNhapLieu.Location = new System.Drawing.Point(453, 171);
             this.txtNhapLieu.Name = "txtNhapLieu";
+            this.txtNhapLieu.PasswordChar = '*';
             this.txtNhapLieu.Size = new System.Drawing.Size(227, 26);
             this.txtNhapLieu.TabIndex = 1;
             this.txtNhapLieu.TextChanged += new System.EventHandler(this.txtSoPIN_TextChanged);
+            this.txtNhapLieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNhapLieu_KeyPress);
             this.txtNhapLieu.Leave += new System.EventHandler(this.txtSoPIN_Leave);
             // 
             // button1
@@ -68,12 +71,25 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lbl_alert
+            // 
+            this.lbl_alert.AutoSize = true;
+            this.lbl_alert.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert.Location = new System.Drawing.Point(176, 247);
+            this.lbl_alert.Name = "lbl_alert";
+            this.lbl_alert.Size = new System.Drawing.Size(408, 37);
+            this.lbl_alert.TabIndex = 7;
+            this.lbl_alert.Text = "Sai mã pin. Vui lòng thử lại!";
+            this.lbl_alert.Visible = false;
+            // 
             // DangNhapMaPIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.lbl_alert);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtNhapLieu);
             this.Controls.Add(this.label1);
@@ -91,5 +107,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNhapLieu;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_alert;
     }
 }

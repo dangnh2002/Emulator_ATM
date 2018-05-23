@@ -31,6 +31,7 @@
             this.txtNhapLieu = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lbl_alert = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNhapLieu
@@ -40,6 +41,7 @@
             this.txtNhapLieu.Name = "txtNhapLieu";
             this.txtNhapLieu.Size = new System.Drawing.Size(227, 26);
             this.txtNhapLieu.TabIndex = 13;
+            this.txtNhapLieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNhapLieu_KeyPress);
             // 
             // label2
             // 
@@ -65,12 +67,25 @@
             this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // lbl_alert
+            // 
+            this.lbl_alert.AutoSize = true;
+            this.lbl_alert.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert.Location = new System.Drawing.Point(81, 211);
+            this.lbl_alert.Name = "lbl_alert";
+            this.lbl_alert.Size = new System.Drawing.Size(542, 37);
+            this.lbl_alert.TabIndex = 14;
+            this.lbl_alert.Text = "Số thẻ không tồn tại. Vui lòng thử lại!";
+            this.lbl_alert.Visible = false;
+            // 
             // DangNhapSoTheATM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
+            this.Controls.Add(this.lbl_alert);
             this.Controls.Add(this.txtNhapLieu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -87,5 +102,6 @@
         private System.Windows.Forms.TextBox txtNhapLieu;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_alert;
     }
 }

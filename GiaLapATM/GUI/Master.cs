@@ -127,6 +127,9 @@ namespace GiaLapATM.GUI
                     else
                     {
                         DangNhapMaPIN_Load();   //load lại nhập mà pin
+                        var Form_nhap_ma_pin = Application.OpenForms[1];
+                        Label lbl_alert = Form_nhap_ma_pin.Controls["lbl_alert"] as Label;
+                        lbl_alert.Visible = true;
                     }
                 }
                 else
@@ -225,6 +228,9 @@ namespace GiaLapATM.GUI
                     if(account.AccountNo == null)   //check account có tồn tại hay không 
                     {
                         DangNhapSoTheATM_Load();    // load lại form nhập số thẻ
+                        var Form_nhap_so_the = Application.OpenForms[1];
+                        Label lbl_alert = Form_nhap_so_the.Controls["lbl_alert"] as Label;
+                        lbl_alert.Visible = true;
                     }
                     else
                     {

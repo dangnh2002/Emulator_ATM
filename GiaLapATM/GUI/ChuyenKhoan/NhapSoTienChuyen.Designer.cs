@@ -69,6 +69,7 @@
             this.txtNhapLieu.Name = "txtNhapLieu";
             this.txtNhapLieu.Size = new System.Drawing.Size(351, 26);
             this.txtNhapLieu.TabIndex = 22;
+            this.txtNhapLieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNhapLieu_KeyPress);
             // 
             // label1
             // 

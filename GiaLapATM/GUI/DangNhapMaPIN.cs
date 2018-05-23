@@ -37,5 +37,10 @@ namespace GiaLapATM.GUI
         {
 
         }
+
+        private void txtNhapLieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }

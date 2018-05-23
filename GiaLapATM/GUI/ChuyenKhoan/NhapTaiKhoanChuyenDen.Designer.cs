@@ -53,6 +53,7 @@
             this.txtNhapLieu.Name = "txtNhapLieu";
             this.txtNhapLieu.Size = new System.Drawing.Size(490, 26);
             this.txtNhapLieu.TabIndex = 2;
+            this.txtNhapLieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNhapLieu_KeyPress);
             // 
             // button6
             // 
