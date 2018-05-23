@@ -70,12 +70,11 @@
             // txtNhapLieu
             // 
             this.txtNhapLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNhapLieu.Location = new System.Drawing.Point(266, 199);
+            this.txtNhapLieu.Location = new System.Drawing.Point(266, 193);
             this.txtNhapLieu.Name = "txtNhapLieu";
+            this.txtNhapLieu.PasswordChar = '*';
             this.txtNhapLieu.Size = new System.Drawing.Size(227, 26);
             this.txtNhapLieu.TabIndex = 24;
-            this.txtNhapLieu.UseSystemPasswordChar = true;
-            this.txtNhapLieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNhapLieu_KeyPress);
             // 
             // DoiMaPIN
             // 

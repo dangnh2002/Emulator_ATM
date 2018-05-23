@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DTO;
 using GiaLapATM.GUI.ChuyenKhoan;
+using GiaLapATM.GUI.RutTien;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,10 @@ namespace GiaLapATM.GUI
             {
                 RutTien_Load();
             }
+            else if(nameForm == "RutTien")
+            {
+                InHoaDon_Load();
+            }
             return;
         }
         private void bttrai2_Click(object sender, EventArgs e)
@@ -46,6 +51,10 @@ namespace GiaLapATM.GUI
             if (nameForm == "GiaoDienChinh")
             {
                 SoDuTaiKhoan_Load();
+            }
+            else if (nameForm == "RutTien")
+            {
+                InHoaDon_Load();
             }
             return;
         }
@@ -55,10 +64,18 @@ namespace GiaLapATM.GUI
             {
                 SaoKeTaiKhoan_Load();
             }
+            else if (nameForm == "RutTien")
+            {
+                InHoaDon_Load();
+            }
             return;
         }
         private void bttrai4_Click(object sender, EventArgs e)
         {            
+            if (nameForm == "RutTien")
+            {
+                InHoaDon_Load();
+            }
             return;
         }
         private void btphai1_Click(object sender, EventArgs e)
@@ -67,6 +84,10 @@ namespace GiaLapATM.GUI
             {
                 DoiMaPIN_Load();
             }
+            else if (nameForm == "RutTien")
+            {
+                InHoaDon_Load();
+            }
             return;
         }
         private void btphai2_Click(object sender, EventArgs e)
@@ -74,6 +95,10 @@ namespace GiaLapATM.GUI
             if (nameForm == "GiaoDienChinh")
             {
                 NhapTaiKhoanChuyenDen_Load();
+            }
+            else if (nameForm == "RutTien")
+            {
+                InHoaDon_Load();
             }
             else if(nameForm == "ThongTinChuyenKhoan")
             {
@@ -112,7 +137,14 @@ namespace GiaLapATM.GUI
             {
                 DangNhapMaPIN_Load();
             }
-
+            else if (nameForm == "InHoaDon")
+            {
+                GiaoDichThanhCong_Load();
+            }
+            else if (nameForm == "RutTien")
+            {
+                InHoaDon_Load();
+            }
             else if (nameForm.Equals("DangNhapMaPIN"))
             {
                 var Form = Application.OpenForms[1];    //khởi tạo form đang mở hiện tại
@@ -150,6 +182,10 @@ namespace GiaLapATM.GUI
                 GiaoDienChinh_Load();
             }
             else if (nameForm.Equals("ChuyenKhoanThanhCong"))
+            {
+                GiaoDienChinh_Load();
+            }
+            else if (nameForm.Equals("GiaoDichThanhCong"))
             {
                 GiaoDienChinh_Load();
             }
@@ -250,6 +286,14 @@ namespace GiaLapATM.GUI
             {
                 DangNhapMaPIN_Load();
             }
+            else if (nameForm == "InHoaDon")
+            {
+                GiaoDichThanhCong_Load();
+            }
+            else if (nameForm == "GiaoDichThanhCong")
+            {
+                DangNhapSoTheATM_Load();
+            }
             else if (nameForm.Equals("XemSoDuTaiKhoan"))
             {
                 SoDuTaiKhoan_Load();
@@ -278,6 +322,10 @@ namespace GiaLapATM.GUI
             {
                 DangNhapSoTheATM_Load();
             }
+            else if (nameForm == "RutTien")
+            {
+                SoTienKhoac_Load();
+            }
             return;
         }
         private void button1_Click(object sender, EventArgs e)
@@ -296,6 +344,26 @@ namespace GiaLapATM.GUI
             this.pnMaster.Controls.Add(chonNgonNgu);
             chonNgonNgu.Show();
             nameForm = "ChonNgonNgu";
+        }
+        private void SoTienKhoac_Load()
+        {
+            Application.OpenForms[1].Close();
+            this.pnMaster.Controls.Clear();
+            GUI.RutTien.SoTienKhac soTienKhac = new GUI.RutTien.SoTienKhac();
+            soTienKhac.TopLevel = false;
+            this.pnMaster.Controls.Add(soTienKhac);
+            soTienKhac.Show();
+            nameForm = "SoTienKhac";
+        }
+        private void GiaoDichThanhCong_Load()
+        {
+            Application.OpenForms[1].Close();
+            this.pnMaster.Controls.Clear();
+            GUI.RutTien.GiaoDichThanhCong giaoDichThanhCong = new GUI.RutTien.GiaoDichThanhCong();
+            giaoDichThanhCong.TopLevel = false;
+            this.pnMaster.Controls.Add(giaoDichThanhCong);
+            giaoDichThanhCong.Show();
+            nameForm = "GiaoDichThanhCong";
         }
         private void DangNhapMaPIN_Load()
         {
@@ -558,7 +626,14 @@ namespace GiaLapATM.GUI
 
         private void btEnter_Click(object sender, EventArgs e)
         {
-            
+            if (nameForm == "SoTienKhoac")
+            {
+                InHoaDon_Load();
+            }
+            else if (nameForm == "DoiMaPIN")
+            {
+                
+            }
         }
         private void btBackspace_Click(object sender, EventArgs e)
         {

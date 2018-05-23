@@ -118,11 +118,23 @@
     <Compile Include="GUI\Master.Designer.cs">
       <DependentUpon>Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\RutTien\GiaoDichThanhCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\RutTien\GiaoDichThanhCong.Designer.cs">
+      <DependentUpon>GiaoDichThanhCong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RutTien\RutTien.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\RutTien\RutTien.Designer.cs">
       <DependentUpon>RutTien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\RutTien\SoTienKhac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\RutTien\SoTienKhac.Designer.cs">
+      <DependentUpon>SoTienKhac.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\SaoKeTK\SaoKeTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -171,8 +183,14 @@
     <EmbeddedResource Include="GUI\Master.resx">
       <DependentUpon>Master.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\RutTien\GiaoDichThanhCong.resx">
+      <DependentUpon>GiaoDichThanhCong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\RutTien\RutTien.resx">
       <DependentUpon>RutTien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\RutTien\SoTienKhac.resx">
+      <DependentUpon>SoTienKhac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SaoKeTK\SaoKeTaiKhoan.resx">
       <DependentUpon>SaoKeTaiKhoan.cs</DependentUpon>
