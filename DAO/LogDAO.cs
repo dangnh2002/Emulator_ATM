@@ -58,7 +58,7 @@ namespace DAO
                 SQLConnect.Instance.ExecuteNonQuery(query);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
