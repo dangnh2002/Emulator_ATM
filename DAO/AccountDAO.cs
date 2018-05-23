@@ -66,5 +66,25 @@ namespace DAO
                 return false;
             }
         }
+        public bool rutTien(double MaThe, double SoTien)
+        {
+            try
+            {
+                var account = getByAccountNo(MaThe);
+                account.Balance -= SoTien;
+                var query = "update tbl_Account set Balance = " + account.Balance + " where AcountID = " + account.AcountID;// câu lệnh update vào DB
+                var result = SQLConnect.Instance.ExecuteNonQuery(query);//update vào DB
+
+                var result1 = LogDAO.Log.RutTien(MaThe, SoTien);//ghi log
+                if (result != 0 && result1)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

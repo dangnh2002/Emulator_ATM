@@ -63,6 +63,33 @@ namespace DAO
                 return false;
             }
         }
+        public bool RutTien(double SoThe, double SoTien)
+        {
+            try
+            {
+                AccountDTO account = AccountDAO.Account.getByAccountNo(SoThe);      // lấy thông tin account theo số thẻ
+                cardDTO Card = cardDAO.Card.getByAccountID(account.AcountID);       // lấy thông tin thẻ theo accoutID
+                LogDTO model = new LogDTO();
+                model.Amount = SoTien;                                          // số tiền giao dịch
+                model.CardNo = Card.CardNo;                                     // số thẻ chuyển tiền = số thẻ rút tiền
+                model.CardToNo = Card.CardNo;                                   // số thẻ nhận tiền = số thẻ rút tiền
+                model.LogDate = DateTime.Now;                                   // thời gian giao dịch (lấy ngày giờ hiện tại)
+                model.LogTypeID = 4;                                            // gán kiểu giao dịch là rút tiền tại cây atm
+                Random rnd = new Random();                                      // khởi tạo hàm random
+                model.ATMID = rnd.Next(1, 11);                                  // random ID máy atm
+                model.Details = "Rút tiền từ cây ATM với số tiền là: " + SoThe.ToString("0,000");   //nội dung rút tiền
+                // tạo cậu sql command để insert object ghi log bên trên vào DB
+                var query = "insert into tbl_Log (LogTypeID,CardNo,ATMID,LogDate,Amount,Details,CardToNo) values("
+                            + model.LogTypeID + "," + model.CardNo + "," + model.ATMID + ",'" + model.LogDate + "'," + model.Amount + ",'" + model.Details + "'," + model.CardToNo + ")";
+                //thực hiện cậu query insert vào Database
+                SQLConnect.Instance.ExecuteNonQuery(query);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public List<LogDTO> get5Rows(double sothe)
         {
             //lấy ra 5 giao dịch gần nhất

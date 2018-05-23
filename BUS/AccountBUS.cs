@@ -18,5 +18,9 @@ namespace BUS
         {
             return AccountDAO.Account.ChuyenTien(fromthe, tothe, sotien);
         }
+        public static bool RutTien(double SoThe, double sotien)
+        {
+            return AccountDAO.Account.rutTien(SoThe, sotien);
+        }
     }
 }

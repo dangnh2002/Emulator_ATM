@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_alert = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbl_alert_err = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lbl_alert
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(219, 138);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 37);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Đổi mã PIN thành công";
+            this.lbl_alert.AutoSize = true;
+            this.lbl_alert.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert.Location = new System.Drawing.Point(219, 138);
+            this.lbl_alert.Name = "lbl_alert";
+            this.lbl_alert.Size = new System.Drawing.Size(350, 37);
+            this.lbl_alert.TabIndex = 27;
+            this.lbl_alert.Text = "Đổi mã PIN thành công";
             // 
             // button5
             // 
@@ -82,13 +83,26 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Bạn có muốn thực hiện giao dịch khác không?";
             // 
+            // lbl_alert_err
+            // 
+            this.lbl_alert_err.AutoSize = true;
+            this.lbl_alert_err.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_alert_err.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_alert_err.Location = new System.Drawing.Point(102, 138);
+            this.lbl_alert_err.Name = "lbl_alert_err";
+            this.lbl_alert_err.Size = new System.Drawing.Size(596, 37);
+            this.lbl_alert_err.TabIndex = 28;
+            this.lbl_alert_err.Text = "Đỗi mã PIN thất bại. Vui lòng thử lại sau!";
+            this.lbl_alert_err.Visible = false;
+            // 
             // DoiMaPINThanhCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GiaLapATM.Properties.Resources.biz_masthead_large;
             this.ClientSize = new System.Drawing.Size(764, 521);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_alert_err);
+            this.Controls.Add(this.lbl_alert);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -102,9 +116,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_alert;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_alert_err;
     }
 }

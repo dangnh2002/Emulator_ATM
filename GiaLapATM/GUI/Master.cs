@@ -40,9 +40,22 @@ namespace GiaLapATM.GUI
             {
                 RutTien_Load();
             }
-            else if(nameForm == "RutTien")
+            else if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 50.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 100000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 50000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
             return;
         }
@@ -54,7 +67,20 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 100.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 150000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 100000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
             return;
         }
@@ -66,15 +92,41 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 200.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 250000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 200000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
             return;
         }
         private void bttrai4_Click(object sender, EventArgs e)
-        {            
+        {
             if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 500.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 550000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 500000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
             return;
         }
@@ -86,7 +138,20 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 1.000.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 1050000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 1000000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
             return;
         }
@@ -98,12 +163,25 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 1.500.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 1550000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 1500000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
-            else if(nameForm == "ThongTinChuyenKhoan")
+            else if (nameForm == "ThongTinChuyenKhoan")
             {
                 //thực hiện giao dịch
-                if(AccountBUS.ChuyenTien(SoThe,sothechuyenden,sotienchuyenden) && LogBUS.ChuyenTien(SoThe, sothechuyenden, sotienchuyenden, details))
+                if (AccountBUS.ChuyenTien(SoThe, sothechuyenden, sotienchuyenden) && LogBUS.ChuyenTien(SoThe, sothechuyenden, sotienchuyenden, details))
                 {
                     //nếu giao dịch thành công và lưu lại lịch sử giao dịch thành công thì trở về giao diện chính
                     ChuyenKhoanThanhCong_Load();
@@ -117,7 +195,7 @@ namespace GiaLapATM.GUI
                 //exportExcel(grid);
                 //btHoaDon.BackColor = Color.White;
                 btHoaDon.BackColor = Color.Gray;
-               // btHoaDon.BackColor = Color.White;
+                // btHoaDon.BackColor = Color.White;
             }
             else if (nameForm == "SoDuTaiKhoan")
             {
@@ -143,7 +221,20 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "RutTien")
             {
-                InHoaDon_Load();
+                //rút 2.000.000 VNĐ
+                var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                if ((account.Balance - 2050000) > 0)                 //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                {
+                    //thực hiện giao dịch
+                    if (AccountBUS.RutTien(SoThe, 2000000))//thực hiện rút tiền
+                        InHoaDon_Load();//thành công
+                    else
+                        GiaoDienChinh_Load();
+                }
+                else
+                {
+                    GiaoDienChinh_Load();
+                }
             }
             else if (nameForm.Equals("DangNhapMaPIN"))
             {
@@ -217,7 +308,7 @@ namespace GiaLapATM.GUI
                 else
                 {
                     NhapTaiKhoanChuyenDen_Load();   //load lại form nhập số tài khoản chuyển tiền đến
-                }                
+                }
             }
             else if (nameForm == "NhapSoTienChuyen")
             {
@@ -225,7 +316,7 @@ namespace GiaLapATM.GUI
                 TextBox txt_Sotienchuyen = Form.Controls["txtNhapLieu"] as TextBox;   //lấy textbox nhập số tiền chuyển đến
                 if (!string.IsNullOrEmpty(txt_Sotienchuyen.Text))   //check null số tiền chuyển
                 {
-                    if(double.Parse(txt_Sotienchuyen.Text)<2000)
+                    if (double.Parse(txt_Sotienchuyen.Text) < 2000)
                     {
                         //thông báo số tiền chuyển khoản phải lớn hơn 20,000VNĐ
                         NhapSoTienChuyen_Load();
@@ -235,7 +326,7 @@ namespace GiaLapATM.GUI
                     }
                     sotienchuyenden = double.Parse(txt_Sotienchuyen.Text); //lưu lại số tiền cần chuyển
                     var account = AccountBUS.getByAccountNo(SoThe); //lấy thông tin account từ số thẻ chuyển tiền
-                    if(sotienchuyenden <= account.Balance - 50000)  //check điều kiện số tiền chuyển đi <= số tiền trong thẻ - 50.000 duy trì thẻ
+                    if (sotienchuyenden <= account.Balance - 50000)  //check điều kiện số tiền chuyển đi <= số tiền trong thẻ - 50.000 duy trì thẻ
                     {
                         ThongTinChuyenKhoan_Load(); //mở form thông tin chuyển khoản
                     }
@@ -257,15 +348,15 @@ namespace GiaLapATM.GUI
             {
                 NhapSoTienChuyen_Load();
             }
-            else if(nameForm == "DangNhapSoTheATM")
+            else if (nameForm == "DangNhapSoTheATM")
             {
                 var Form = Application.OpenForms[1];    //khởi tạo form đang mở
                 TextBox txt_sothe = Form.Controls["txtNhapLieu"] as TextBox;    //lấy textbox nhập số thẻ atm
-                if(!string.IsNullOrEmpty(txt_sothe.Text))   //check null số thẻ
+                if (!string.IsNullOrEmpty(txt_sothe.Text))   //check null số thẻ
                 {
                     SoThe = double.Parse(txt_sothe.Text); //lưu lại số thẻ
                     var account = AccountBUS.getByAccountNo(SoThe); // lấy thông tin account theo số thẻ
-                    if(account.AccountNo == null)   //check account có tồn tại hay không 
+                    if (account.AccountNo == null)   //check account có tồn tại hay không 
                     {
                         DangNhapSoTheATM_Load();    // load lại form nhập số thẻ
                         var Form_nhap_so_the = Application.OpenForms[1];
@@ -332,6 +423,7 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "RutTien")
             {
+                //rút số tiền khác
                 SoTienKhoac_Load();
             }
             return;
@@ -430,7 +522,7 @@ namespace GiaLapATM.GUI
             Application.OpenForms[1].Close();//đóng form hiện tại đang mở
             this.pnMaster.Controls.Clear();
             SoDuTaiKhoan soDuTaiKhoan = new SoDuTaiKhoan();
-            soDuTaiKhoan.TopLevel = false;            
+            soDuTaiKhoan.TopLevel = false;
             this.pnMaster.Controls.Add(soDuTaiKhoan);
             soDuTaiKhoan.Show();
             nameForm = "SoDuTaiKhoan";
@@ -521,7 +613,7 @@ namespace GiaLapATM.GUI
             nameForm = "ThongTinChuyenKhoan";
 
             var account = AccountBUS.getByAccountNo(sothechuyenden);
-            var AccountInfo = CustomerBUS.getByCustID(account.CustID); 
+            var AccountInfo = CustomerBUS.getByCustID(account.CustID);
             var Form = Application.OpenForms[1];
             Label lbl_chutaikhoan = Form.Controls["lbl_chutaikhoan"] as Label;
             lbl_chutaikhoan.Text = AccountInfo.Name;
@@ -632,7 +724,7 @@ namespace GiaLapATM.GUI
             {
                 var form = Application.OpenForms[1];
                 form.Controls["txtNhapLieu"].Text = "";
-            }                
+            }
             return;
         }
 
@@ -646,7 +738,29 @@ namespace GiaLapATM.GUI
         {
             if (nameForm == "SoTienKhoac")
             {
-                InHoaDon_Load();
+                var Form = Application.OpenForms[1];
+                TextBox txt_SoTien = Form.Controls["txtNhapLieu"] as TextBox;
+                if (!string.IsNullOrEmpty(txt_SoTien.Text))    //check null số tiền nhập vào
+                {
+                    var sotien = double.Parse(txt_SoTien.Text);
+                    var account = AccountBUS.getByAccountNo(SoThe);     //lấy thông tin account từ số thẻ chuyển tiền
+                    if ((account.Balance - 50000 - sotien) > 0)         //kiểm tra số tiền sau khi rút còn đủ 50.000 duy trì thẻ hay không
+                    {
+                        //thực hiện giao dịch
+                        if (AccountBUS.RutTien(SoThe, sotien))//thực hiện rút tiền
+                            InHoaDon_Load();//thành công
+                        else
+                            GiaoDienChinh_Load();
+                    }
+                    else
+                    {
+                        GiaoDienChinh_Load();
+                    }
+                }
+                else
+                {
+                    RutTien_Load();
+                }
             }
             else if (nameForm == "DoiMaPIN")
             {
@@ -657,11 +771,16 @@ namespace GiaLapATM.GUI
                     var mapinmoi = double.Parse(txt_MaPinMoi.Text);
                     if (CardBUS.DoiPin(SoThe, mapinmoi))   //Đổi mã pin
                     {
-                        GiaoDienChinh_Load();   //trở về giao diện chính
+                        DoiMaPINThanhCong_Load();   //thông báo đổi pin thành công
                     }
                     else
                     {
-                        GiaoDienChinh_Load();
+                        DoiMaPINThanhCong_Load();   //thông báo đổi pin thất bại
+                        var Form_alert = Application.OpenForms[1];      //get form hiện tại
+                        Label lbl_alert = Form_alert.Controls["lbl_alert"] as Label;            //get label thông báo thành công
+                        lbl_alert.Visible = false;                                              //ẩn label thông báo thành công
+                        Label lbl_alert_err = Form_alert.Controls["lbl_alert_err"] as Label;    //get label thông báo thất bại
+                        lbl_alert.Visible = true;                                               //hiển thị label thông báo thất bại
                     }
                 }
                 else
@@ -681,7 +800,7 @@ namespace GiaLapATM.GUI
                     form.Controls["txtNhapLieu"].Text = form.Controls["txtNhapLieu"].Text.Remove(length - 1, 1);
                 }
             }
-            return;       
+            return;
         }
         #endregion
 
