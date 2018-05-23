@@ -19,8 +19,8 @@ namespace DAO
         }
         
 
-        //private static String strSQL = @"Data Source=TECA-PC\SQLEXPRESS;Initial Catalog=Emulator_ATM;Integrated Security=True";
-        private static String strSQL = @"Data Source=DESKTOP-PSRRS98\SQLEXPRESSS;Initial Catalog=Emulator_ATM;Integrated Security=True";
+        private static String strSQL = @"Data Source=TECA-PC\SQLEXPRESS;Initial Catalog=Emulator_ATM;Integrated Security=True";
+        //private static String strSQL = @"Data Source=DESKTOP-PSRRS98\SQLEXPRESSS;Initial Catalog=Emulator_ATM;Integrated Security=True";
 
         public DataTable ExecuteQuery(String query)
         {
@@ -34,7 +34,7 @@ namespace DAO
                     SqlDataAdapter adapter = new SqlDataAdapter(cm);
                     adapter.Fill(table);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                 }
@@ -57,7 +57,7 @@ namespace DAO
                     kq = cm.ExecuteNonQuery();
                     
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                 }
