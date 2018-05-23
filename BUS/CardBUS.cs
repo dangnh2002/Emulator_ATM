@@ -13,5 +13,9 @@ namespace BUS
         {
             return cardDAO.Card.ktDangNhap(soTheATM, soPIN);
         }
+        public static bool DoiPin(double soTheATM, double soPIN)
+        {
+            return cardDAO.Card.DoiMaPin(soPIN, soPIN);
+        }
     }
 }

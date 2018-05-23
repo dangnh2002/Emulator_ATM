@@ -632,7 +632,24 @@ namespace GiaLapATM.GUI
             }
             else if (nameForm == "DoiMaPIN")
             {
-                
+                var Form = Application.OpenForms[1];
+                TextBox txt_MaPinMoi = Form.Controls["txtNhapLieu"] as TextBox;
+                if (!string.IsNullOrEmpty(txt_MaPinMoi.Text))  //check null nhập mã pin
+                {
+                    var mapinmoi = double.Parse(txt_MaPinMoi.Text);
+                    if (CardBUS.DoiPin(SoThe, mapinmoi))   //Đổi mã pin
+                    {
+                        GiaoDienChinh_Load();   //trở về giao diện chính
+                    }
+                    else
+                    {
+                        GiaoDienChinh_Load();
+                    }
+                }
+                else
+                {
+                    DoiMaPIN_Load();   //load lại nhập mà pin
+                }
             }
         }
         private void btBackspace_Click(object sender, EventArgs e)

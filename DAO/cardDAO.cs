@@ -25,18 +25,34 @@ namespace DAO
                 return true;
             return false;
         }
+        public bool DoiMaPin(double soTheATM, double SoPin)
+        {
+            try
+            {
+                var query = "update from tbl_Card join tbl_Account on tbl_Card.AcountID = tbl_Account.AcountID set PIN = '" + SoPin + "' where AccountNo = '" + soTheATM + "'";
+                var result = SQLConnect.Instance.ExecuteNonQuery(query);
+                if (result != 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public cardDTO getByAccountID(int AccountID)
         {
             //lấy thông tin account theo accountID
-            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Card where AcountID ='" + AccountID +"'");
+            DataTable data = SQLConnect.Instance.ExecuteQuery("select * from tbl_Card where AcountID ='" + AccountID + "'");
             cardDTO model = new cardDTO();  //object trả ra
-            if(data.Rows.Count>0)
+            if (data.Rows.Count > 0)
             {
                 model = convertToObject(data).FirstOrDefault();//convert về dạng object
             }
             return model;
         }
-        public List<cardDTO> convertToObject (DataTable input)
+        public List<cardDTO> convertToObject(DataTable input)
         {
             //hàm convert từ DataTable sang list<object>
             List<cardDTO> output = new List<cardDTO>();
